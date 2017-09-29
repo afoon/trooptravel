@@ -1,0 +1,30 @@
+{
+  "name": "personalProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afoon/trooptravel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afoon/trooptravel/issues"
+  },
+  "homepage": "https://github.com/afoon/trooptravel#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.0",
+    "express-session": "^1.15.6",
+    "massive": "^4.3.0",
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.0",
+    "request": "^2.83.0"
+  }
+}
