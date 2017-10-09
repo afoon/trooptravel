@@ -84,6 +84,18 @@ const ctrl = require('./server/controls/dataCtrl')
 
 
 app.get('/api/users', ctrl.getAll);
+
 app.post('/api/users',ctrl.createUser);
+app.post('/api/trips',ctrl.createTrip);
+app.post('/api/housing',ctrl.createHousing);
+app.post('/api/trips/:id',ctrl.addTripGuest);
+
+app.put('/api/housing/:id', ctrl.updateHousing);
+app.put('/api/trips/:id', ctrl.updateTrip);
+
+app.delete('/api/trips/:id', ctrl.deleteTrip);
+app.delete('/api/housing/:id', ctrl.deleteHousing);
+app.delete('/api/trips/:id', ctrl.removeTripUser);
+
 
 app.listen( port, () => { console.log(`Andre ${port}`); } );

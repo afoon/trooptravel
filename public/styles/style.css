@@ -1,13 +1,24 @@
-.test{
-    background-image: url('https://static.pexels.com/photos/346885/pexels-photo-346885.jpeg');
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-color: rgba(255, 255, 255, 0.25); 
-}
-.background{
-    background-color: rgba(0, 0, 0, 0.25);
+.backgroundImage{
+    background: no-repeat center bottom scroll; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 150px;
     height: 100vh;
-    font-family: 'Helvetica Neue'
+    padding-top: 2%;
+    font-size: 100%; 
+    transition-duration: 500ms;
+}
+.overlay{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.19);
+    height: 100vh;
+    font-family: 'Helvetica Neue';
 }
 
 .containcontent{
@@ -20,7 +31,7 @@
     flex-direction: row;
     justify-content: space-around;
     list-style-type: none;
-    margin: 0;
+    margin: 20px,0,0,0;
     padding: 0;
     font-family: 'Helvetica Neue';
     color: White;
@@ -44,8 +55,8 @@
 }
 
 .loginBox{
-    margin: 100px 50px;
-    padding: 50px 20px;
+    margin: 100px 150px;
+    padding: 100px 20px;
     max-width: 450px;
     display: flex;
     flex-direction: column;
@@ -69,3 +80,10 @@
 .getStarted:hover{
     background-color: rgb(252, 102, 117);
 }
+
+.hideme{
+    display: none;
+}
+
+
+
