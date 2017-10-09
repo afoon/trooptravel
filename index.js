@@ -1,10 +1,11 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const {secret,dbUser, database} = require('../config');
+const cors = require('cors');
+const {secret,dbUser, database} = require('./config');
 
 const passport = require('passport');
-const strategy = require('../login');
+const strategy = require('./login');
 const massive = require('massive');
 
 const connectionString = `postgres://${dbUser}@localhost/${database}`
@@ -16,6 +17,7 @@ const app = express();
 ///////////////////////////////////
 ///////// authentication //////////
 ///////////////////////////////////
+
 
 app.use( session({
   secret: secret,
@@ -34,7 +36,17 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-     //||||||| login/logout ||||||||
+///////////////////////////////////
+///////// middleware //////////////
+///////////////////////////////////
+app.use('/', express.static(__dirname + '/public'));
+massive(connectionString).then(db => {
+  app.set('db', db);
+});
+app.use(cors());
+app.use(bodyParser.json());
+
+//||||||| login/logout ||||||||
 
      app.get('/auth/',passport.authenticate('auth0'));
      // app.get('/auth/callback',passport.authenticate('auth0', {succesfulRedirect: '/'}, (req,res)=>{
@@ -51,8 +63,8 @@ passport.deserializeUser(function(obj, done) {
      );
      
      app.get('/login',
-     passport.authenticate('auth0', {}), function (req, res) {
-     res.redirect("/");
+     passport.authenticate('auth0', {}), function (req, res,next) {
+     res.redirect('/');
      });
      app.get('/',(req,res)=>{
          res.status(200).send(req.user);
@@ -64,10 +76,14 @@ passport.deserializeUser(function(obj, done) {
 //////////////////////////////////
 ///////// controllers ////////////
 //////////////////////////////////
-
+const ctrl = require('./server/controls/dataCtrl')
 
 ///////////////////////////////////
 /////////// endpoints /////////////
 ///////////////////////////////////
+
+
+app.get('/api/users', ctrl.getAll);
+app.post('/api/users',ctrl.createUser);
 
 app.listen( port, () => { console.log(`Andre ${port}`); } );
