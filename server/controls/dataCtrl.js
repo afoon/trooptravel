@@ -59,7 +59,7 @@
     });
     };
     const deleteTrip = (req,res,next) =>{
-        const db = app.get('db');
+        const db = req.app.get('db');
         db.deleteTrip([req.params.id]).then(response => {res.status(200).json(response)
         })
         .catch(err => {
@@ -67,7 +67,7 @@
     });
     };
     const deleteHousing = (req,res,next) =>{
-        const db = app.get('db');
+        const db = req.app.get('db');
         db.deleteHousing([req.params.id]).then(response => {res.status(200).json(response)
         })
         .catch(err => {
@@ -75,8 +75,8 @@
     });
     };
     const removeTripUser = (req,res,next) =>{
-        const db = app.get('db');
-        db.removeTripUser([req.params.id, req.params.user]).then(response => {res.status(200).json(response)
+        const db = req.app.get('db');
+        db.removeTripUser([req.params.id]).then(response => {res.status(200).json(response)
         })
         .catch(err => {
         res.status(500);

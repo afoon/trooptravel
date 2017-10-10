@@ -1,12 +1,12 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const {secret,dbUser, database} = require('./config');
-
-const passport = require('passport');
-const strategy = require('./login');
 const massive = require('massive');
+const cors = require('cors');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+const {domain,secret,dbUser, database,client,clSecret} = require('./config');
+
 
 const connectionString = `postgres://${dbUser}@localhost/${database}`
 const request = require('request');
@@ -15,61 +15,70 @@ const port = 3000;
 const app = express();
 
 ///////////////////////////////////
+///////// middleware //////////////
+///////////////////////////////////
+app.use('/', express.static(__dirname + '/public'));
+app.use(cors());
+app.use(bodyParser.json());
+
+///////////////////////////////////
 ///////// authentication //////////
 ///////////////////////////////////
-
+massive(connectionString).then(instance => {
+  app.set('db',instance)
+}).catch(err => {
+  console.log(err);
+})
 
 app.use( session({
   secret: secret,
   resave: true,
   saveUninitialized: true
 }));
-app.use(passport.initialize())
-app.use(passport.session())
-passport.use(strategy);
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
-///////////////////////////////////
-///////// middleware //////////////
-///////////////////////////////////
-app.use('/', express.static(__dirname + '/public'));
-massive(connectionString).then(db => {
-  app.set('db', db);
-});
-app.use(cors());
-app.use(bodyParser.json());
 
 //||||||| login/logout ||||||||
+app.use(passport.initialize());
+app.use(passport.session());
 
-     app.get('/auth/',passport.authenticate('auth0'));
-     // app.get('/auth/callback',passport.authenticate('auth0', {succesfulRedirect: '/'}, (req,res)=>{
-     //     res.status(200).send(req.user);
-     // }))
-     app.get('/auth/callback',
-     passport.authenticate('auth0', { failureRedirect: '/login' }),
-     function(req, res) {
-       if (!req.user) {
-         throw new Error('user null');
+// using passport to access auth0
+// { domain: config.auth0.domain ... etc}
+passport.use(new Auth0Strategy({
+    domain: domain,
+    clientID: client,
+    clientSecret: clSecret,
+    callbackURL:  '/auth/callback'
+   }, (accessToken, refreshToken, extraParams, profile, done) => {
+     //Find user in database
+     console.log("profile",profile);
+     const db = app.get('db');
+     // .then means this is a promise
+     db.getUserByAuthId([profile._json.sub]).then((user, err) => {
+         console.log('INITIAL: ', user);
+       if (!user[0]) { //if there isn't a user, we'll create one!
+         console.log('CREATING USER');
+         db.createUserByAuth([profile._json.sub, profile.displayName,profile.email,profile.picture]).then((user, err) => {
+           console.log('USER CREATED', user[0]);
+           return done(err, user[0]); // GOES TO SERIALIZE USER
+         })
+       } else { //when we find the user, return it
+         console.log('FOUND USER', user[0]);
+         return done(err, user[0]);
        }
-       res.redirect("/");
-     }
-     );
-     
-     app.get('/login',
-     passport.authenticate('auth0', {}), function (req, res,next) {
-     res.redirect('/');
      });
-     app.get('/',(req,res)=>{
-         res.status(200).send(req.user);
-     })
-     
+   }
+ ));
+
+// put user on session
+ passport.serializeUser((user, done) => {
+     done(null, user);
+ });
+
+// pull user from session for manipulation
+ passport.deserializeUser((user, done) => {
+     console.log(user);
+     done(null, user);
+ });
+
 
 
 
@@ -81,6 +90,34 @@ const ctrl = require('./server/controls/dataCtrl')
 ///////////////////////////////////
 /////////// endpoints /////////////
 ///////////////////////////////////
+// auth endpoints
+
+// initial endpoint to fire off login
+app.get('/login', passport.authenticate('auth0', {scope: 'openid profile'}));
+
+// redirect to home and use the resolve to catch the user
+app.get('/auth/callback',
+    passport.authenticate('auth0', { successRedirect: '/#/main',failureRedirect: '/login' }), (req, res) => {
+        res.status(200).json(req.user);
+});
+
+// if not logged in, send error message and catch in resolve
+// else send user
+app.get('/auth/me', (req, res) => {
+    if (!req.user) {res.redirect('/');}
+});
+
+// remove user from session
+app.get('/auth/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
+app.get('/',(req,res)=>{
+    res.status(200).send(req.user);
+})
+
+//////other endpoints//////
 
 
 app.get('/api/users', ctrl.getAll);

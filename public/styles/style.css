@@ -4,21 +4,33 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 150px;
     height: 100vh;
     padding-top: 2%;
     font-size: 100%; 
     transition-duration: 500ms;
+
 }
-.overlay{
+.overlayblack{
     position: absolute;
     top:0;
     bottom:0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.19);
+    background-color: rgba(63, 63, 63, 0.36);
     height: 100vh;
     font-family: 'Helvetica Neue';
+}
+.overlaywhite{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(151, 150, 150, 0.36);
+    height: 105vh;
+    font-family: 'Helvetica Neue';
+    font-size: 100%;
+    color: white;
 }
 
 .containcontent{
@@ -35,6 +47,16 @@
     padding: 0;
     font-family: 'Helvetica Neue';
     color: White;
+}
+.nav{
+    background-color: rgba(0, 0, 0, 0.38);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 .navLinks,a{
@@ -84,6 +106,49 @@
 .hideme{
     display: none;
 }
+.mainbkg{
+    background: no-repeat center bottom scroll url('https://source.unsplash.com/collection/158643/1600x900'); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    padding-top: 2%;
+    position: fixed;
+    top: 0;
+    font-size: 100%;
+    color: white;
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-direction: column;
+    filter: blur(3px)
+}
 
+.newTrip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.newView{
+    display: flex;
+    flex-direction: row;
+    margin-top:70px;
+    justify-content: space-around;
+
+}
+.newRow{
+    display: flex;
+    flex-direction: column;
+    margin-top:70px;
+    justify-content: space-around;
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+body{
+    margin: 0;
+}
 
 
