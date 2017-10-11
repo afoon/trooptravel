@@ -9,7 +9,7 @@ angular.module('troopApp',['ui.router']).config(function ($stateProvider, $urlRo
             .state('main', {
                 url: '/main',
                 templateUrl: 'views/main.html',
-                controller: 'mainCtrl'
+                controller: 'mainCtrl',
             })
             .state('trip', {
                 url: '/trip',

@@ -1,12 +1,14 @@
 
     const getAll = (req,res,next) =>{
         const db = req.app.get('db');
-        db.getAllUsers().then(response => {
+        if(req.user){
+            console.log('user',req.user)
+        db.getCurrUser([req.user.authid]).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {
         res.status(500)}
-    )}
+    )}}
 
     const createUser = (req,res,next) =>{
         const db = req.app.get('db');

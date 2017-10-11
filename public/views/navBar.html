@@ -1,7 +1,7 @@
 <div class="nav">
         <ul class=navLinks>
-            <a ui-sref="main"><li>HOME</li></a>
+            <a href="/auth/me"><li>HOME</li></a>
             <a href="#"><li>ABOUT</li></a>
-            <a href="/auth/logout"><li>LOGOUT</li></a>
+            <a href="/auth/logout"><li><img class="usericon" ng-src="{{user[0].photourl}}">{{user[0].name}}</li></a>
         </ul>
         </div>

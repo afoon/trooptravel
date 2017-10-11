@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
          console.log('INITIAL: ', user);
        if (!user[0]) { //if there isn't a user, we'll create one!
          console.log('CREATING USER');
-         db.createUserByAuth([profile._json.sub, profile.displayName,profile.email,profile.picture]).then((user, err) => {
+         db.createUserByAuth([profile._json.sub, profile.displayName,profile.picture,profile.email]).then((user, err) => {
            console.log('USER CREATED', user[0]);
            return done(err, user[0]); // GOES TO SERIALIZE USER
          })
@@ -93,7 +93,8 @@ const ctrl = require('./server/controls/dataCtrl')
 // auth endpoints
 
 // initial endpoint to fire off login
-app.get('/login', passport.authenticate('auth0', {scope: 'openid profile'}));
+app.get('/login', passport.authenticate('auth0', {scope: 'openid profile'}))
+;
 
 // redirect to home and use the resolve to catch the user
 app.get('/auth/callback',
@@ -105,6 +106,7 @@ app.get('/auth/callback',
 // else send user
 app.get('/auth/me', (req, res) => {
     if (!req.user) {res.redirect('/');}
+    if (req.user) {res.redirect('/#/main')}
 });
 
 // remove user from session
@@ -118,7 +120,10 @@ app.get('/',(req,res)=>{
 })
 
 //////other endpoints//////
-
+app.get('/auth/logged', (req, res) => {
+  if (!req.user) {res.redirect('/login');}
+  if (req.user) {res.redirect('/#/main')}
+});
 
 app.get('/api/users', ctrl.getAll);
 
