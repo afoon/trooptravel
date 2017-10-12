@@ -188,4 +188,15 @@ body{
 }
 .tripbox{
   padding: 5px 0 5px 50px;
+  font-weight: 200;
+}
+.welcome{
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    align-content: bottom;
+}
+.name{
+    font-weight: 300;
 }

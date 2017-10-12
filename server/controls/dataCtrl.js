@@ -17,6 +17,25 @@
         .catch(err => {
         res.status(500)}
     )}}
+    const getCurrTrip = (req,res,next) =>{
+        const db = req.app.get('db');
+        console.log(req.params.tripid)
+        db.getCurrTrip([req.params.tripid]).then(response => {
+            res.status(200).json(response)
+        })
+    //     .catch(err => {
+    //     res.status(500)}
+    // )
+}
+    const getTripGuest = (req,res,next) =>{
+        const db = req.app.get('db');
+        db.getTripGuest([req.params.tripid]).then(response => {
+            console.log('trip', response)
+            res.status(200).json(response)
+        })
+        .catch(err => {
+        res.status(500)}
+    )}
     const createUser = (req,res,next) =>{
         const db = req.app.get('db');
         db.createUser().then(response => {
@@ -27,9 +46,10 @@
     )}
     const createTrip = (req,res,next) =>{
         const db = req.app.get('db');
-        db.createTrip([req.body.authid,req.body.location,req.body.start,req.body.end]).then(response => {
-            res.status(200).json(response)
-        })
+        db.createTrip(req.body.authid,req.body.location,req.body.start,req.body.end).then(response => {
+            console.log('WTF???',response)
+        db.addFirstGuest(response[0].admin,response[0].tripid)
+        }).then(response => res.json(response))
         .catch(err => {
             console.log(err)
         res.status(500)}
@@ -96,6 +116,8 @@
     module.exports = {
         getAll,
         getUserTrips,
+        getCurrTrip,
+        getTripGuest,
         createUser,
         createHousing,
         createTrip,

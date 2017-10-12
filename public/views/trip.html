@@ -3,8 +3,8 @@
     <div class="overlaywhite"> 
     <nav-bar></nav-bar>
     <div class="newView">
-    <h1>{{trips[2].location}}</h1>
-    <h3> {{trips[2].start | date:'MMM d, yyyy'}} - {{trips[2].enddate | date:'MMM d, yyyy'}}</h3>
-    <p>There are 6 People on this trip</p>
+    <h1>{{currtrip[0].location}}</h1>
+    <h3> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</h3>
+    <p>There are {{tripguest.length}} People on this trip</p>
     </div>
     </div>

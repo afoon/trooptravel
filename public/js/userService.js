@@ -22,6 +22,16 @@ angular.module('troopApp').service('userService',function($http)
     this.getUserTrips = function() {
         return $http.get('/api/utrips').then(function(response){
         return response;
-    })
+    });
 }
+    this.getCurrTrip = function(tripid){
+        return $http.get(`/api/currtrip/${tripid}`).then(function(response){
+            return response;
+        })
+    }
+    this.getTripGuest = function(tripid){
+        return $http.get('/api/tripguest', {tripid}).then(function(response){
+            return response;
+        })
+    }
 });

@@ -4,7 +4,7 @@
     <nav-bar></nav-bar>
  <div class="newView">
      <div class="welcome">
-            <h3>Welcome</h3><span><h1>{{user[0].firstname}}</h1></span>
+            <p>Welcome back,&nbsp&nbsp</p><span class="name">{{user[0].firstname}}</span>
      </div>
      <div class="newTrip">
        <!--New Trip Modal   -->
@@ -35,11 +35,10 @@
      </div> 
 
  <!-- Where Trip is located     -->
- <h1 class="tripbox">MY TRIPS</h1>
-<div class="newRow">
-<div class="Current"></div>
+ <h1 class="tripbox">My Trips</h1>
+<div class="row tripbox">
 <div class="col-sm-4" ng-repeat="trip in trips">
-    <a ui-sref="trip"><div class="card bg-dark text-white">
+  <a ui-sref="trip({id:trip.tripid})" ng-click="getTripGuest()"><div class="card bg-dark text-white">
       <img class="card-img" src="https://source.unsplash.com/1600x900/?{{trip.location}}" alt="{{trip.location}}">
       <div class="card-img-overlay">
        <h1 class="card-title">{{trip.location}}</h1>

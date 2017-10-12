@@ -127,6 +127,8 @@ app.get('/auth/logged', (req, res) => {
 
 app.get('/api/users', ctrl.getAll);
 app.get('/api/utrips', ctrl.getUserTrips);
+app.get('/api/currtrip/:tripid', ctrl.getCurrTrip);
+app.get('/api/tripguest/:tripid', ctrl.getTripGuest);
 
 app.post('/api/users',ctrl.createUser);
 app.post('/api/trips',ctrl.createTrip);
