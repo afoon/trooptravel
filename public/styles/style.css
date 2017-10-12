@@ -123,7 +123,25 @@
     font-family: 'Helvetica Neue';
     display: flex;
     flex-direction: column;
-    filter: blur(4px)
+    filter: blur(5px)
+}
+.tripbkg{
+    background: no-repeat center bottom scroll; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    padding-top: 2%;
+    position: fixed;
+    top: 0;
+    font-size: 100%;
+    color: white;
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-direction: column;
+    filter: blur(5px)
 }
 
 .newTrip{
@@ -141,7 +159,7 @@
 }
 .newRow{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-top:70px;
     justify-content: space-around;
     margin-left: 15px;
@@ -164,3 +182,10 @@ body{
     padding: 0;
 }
 
+#btn{
+    background: none;
+    border: none;
+}
+.tripbox{
+  padding: 5px 0 5px 50px;
+}

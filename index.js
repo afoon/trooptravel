@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
          console.log('INITIAL: ', user);
        if (!user[0]) { //if there isn't a user, we'll create one!
          console.log('CREATING USER');
-         db.createUserByAuth([profile._json.sub, profile.displayName,profile.picture,profile.email]).then((user, err) => {
+         db.createUserByAuth([profile._json.sub, profile.displayName,profile.picture,profile._json.given_name,profile._json.family_name]).then((user, err) => {
            console.log('USER CREATED', user[0]);
            return done(err, user[0]); // GOES TO SERIALIZE USER
          })
@@ -126,6 +126,7 @@ app.get('/auth/logged', (req, res) => {
 });
 
 app.get('/api/users', ctrl.getAll);
+app.get('/api/utrips', ctrl.getUserTrips);
 
 app.post('/api/users',ctrl.createUser);
 app.post('/api/trips',ctrl.createTrip);

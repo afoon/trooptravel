@@ -2,14 +2,21 @@
     const getAll = (req,res,next) =>{
         const db = req.app.get('db');
         if(req.user){
-            console.log('user',req.user)
         db.getCurrUser([req.user.authid]).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {
         res.status(500)}
     )}}
-
+    const getUserTrips = (req,res,next) =>{
+        const db = req.app.get('db');
+        if(req.user){
+        db.getUserTrips([req.user.authid]).then(response => {
+            res.status(200).json(response)
+        })
+        .catch(err => {
+        res.status(500)}
+    )}}
     const createUser = (req,res,next) =>{
         const db = req.app.get('db');
         db.createUser().then(response => {
@@ -20,15 +27,16 @@
     )}
     const createTrip = (req,res,next) =>{
         const db = req.app.get('db');
-        db.createTrip().then(response => {
+        db.createTrip([req.body.authid,req.body.location,req.body.start,req.body.end]).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {
+            console.log(err)
         res.status(500)}
     )}
     const addTripGuest = (req,res,next) =>{
         const db = req.app.get('db');
-        db.addTripGuest().then(response => {
+        db.addTripGuest([req.body.friend,req.body.trip]).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {
@@ -87,6 +95,7 @@
 
     module.exports = {
         getAll,
+        getUserTrips,
         createUser,
         createHousing,
         createTrip,
