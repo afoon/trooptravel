@@ -33,11 +33,17 @@ console.log($stateParams)
     }
     function getTripGuest(tripid) {
         console.log(tripid)
-        userService.getCurrTrip(tripid).then(function(response){
+        userService.getTripGuest(tripid).then(function(response){
             console.log('trip guest', response)
             $scope.tripguest = response.data;
         })
     }
+    $scope.addTripGuest = function(tripid,friend){
+        userService.addTripGuest(trip.id,friend).then(
+            function(response){
+           getAddTripGuest()
+        }
+    )}
     $timeout(function(){
         getCurrTrip($stateParams.id)
         getTripGuest($stateParams.id);

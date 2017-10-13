@@ -26,7 +26,7 @@
     bottom:0;
     left: 0;
     right: 0;
-    background-color: rgba(151, 150, 150, 0.36);
+    background-color: rgba(151, 150, 150, 0.479);
     height: 105vh;
     font-family: 'Helvetica Neue';
     font-size: 100%;
@@ -166,6 +166,25 @@
     margin-right: 15px;
 
 }
+.makeRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.newColumn{
+    display: flex;
+    flex-direction: column;
+    margin-top:70px;
+    justify-content: space-around;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.makeColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 body{
     margin: 0;
 }
@@ -199,4 +218,31 @@ body{
 }
 .name{
     font-weight: 300;
+}
+.optionsbox{
+    background: rgba(255, 255, 255, 0.329);
+    width: 500px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.makeGuestRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+}
+.tripboxoverlay{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.514);
+    height: auto;
+    font-family: 'Helvetica Neue';
+    font-size: 100%;
+    color: white;
 }

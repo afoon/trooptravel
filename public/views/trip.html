@@ -1,10 +1,26 @@
-<div class="tripbkg" style="background: url('https://source.unsplash.com/1600x900/?chicago')">
+<div class="tripbkg" style="background: url('https://source.unsplash.com/1600x900/?{{currtrip[0].location}}')">
     </div>
-    <div class="overlaywhite"> 
+<!-- start page content -->
+<div class="overlaywhite"> 
     <nav-bar></nav-bar>
-    <div class="newView">
-    <h1>{{currtrip[0].location}}</h1>
-    <h3> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</h3>
-    <p>There are {{tripguest.length}} People on this trip</p>
+    <trip-info></trip-info>
+        <div class="newRow">
+            <a ui-sref="housing({id:currtrip[0].tripid})"><div class=" optionsbox">
+                <img src="../img/housing.png">
+                <p class="welcome">housing</p>
+            </a></div>
+            <a href="#"><div class=" optionsbox">
+                <img src="../img/transportation.png">
+                <p class="welcome">transportation</p>
+            </a></div>
+            <a href="#"><div class=" optionsbox">
+                <img src="../img/tripRules.png">
+                <p class="welcome">trip guidelines</p>
+            </a></div>
+            <a href="#"><div class=" optionsbox">
+                <img src="../img/activities.png">
+                 <p class="welcome">activities</p>
+            </a></div>
+        </div>
     </div>
-    </div>
+</div>

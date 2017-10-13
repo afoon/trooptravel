@@ -30,7 +30,12 @@ angular.module('troopApp').service('userService',function($http)
         })
     }
     this.getTripGuest = function(tripid){
-        return $http.get('/api/tripguest', {tripid}).then(function(response){
+        return $http.get(`/api/tripguest/${tripid}`).then(function(response){
+            return response;
+        })
+    }
+    this.addTripGuest = function(tripid,friend){
+        return $http.post(`/api/trips/${tripid}`, {friend}).then(function(response){
             return response;
         })
     }

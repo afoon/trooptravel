@@ -17,7 +17,7 @@ angular.module('troopApp',['ui.router']).config(function ($stateProvider, $urlRo
                 // controller: 'mainCtrl'
             })
             .state('housing', {
-                url: '/housing',
+                url: '/housing/:id',
                 templateUrl: 'views/housing.html',
             });
             

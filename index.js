@@ -133,7 +133,7 @@ app.get('/api/tripguest/:tripid', ctrl.getTripGuest);
 app.post('/api/users',ctrl.createUser);
 app.post('/api/trips',ctrl.createTrip);
 app.post('/api/housing',ctrl.createHousing);
-app.post('/api/trips/:id',ctrl.addTripGuest);
+app.post('/api/trips/:tripid',ctrl.addTripGuest);
 
 app.put('/api/housing/:id', ctrl.updateHousing);
 app.put('/api/trips/:id', ctrl.updateTrip);

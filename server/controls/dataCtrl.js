@@ -29,8 +29,9 @@
 }
     const getTripGuest = (req,res,next) =>{
         const db = req.app.get('db');
+        console.log('datactrl before sql', req.params.tripid)
         db.getTripGuest([req.params.tripid]).then(response => {
-            console.log('trip', response)
+            console.log('guest', response)
             res.status(200).json(response)
         })
         .catch(err => {
@@ -56,7 +57,7 @@
     )}
     const addTripGuest = (req,res,next) =>{
         const db = req.app.get('db');
-        db.addTripGuest([req.body.friend,req.body.trip]).then(response => {
+        db.addTripGuest([req.body.friend,req.params.tripid]).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {
