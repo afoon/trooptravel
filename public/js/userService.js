@@ -9,8 +9,13 @@ angular.module('troopApp').service('userService',function($http)
 // console.log(promise);
 //     }
 
+this.getFriends = function(){
+    return $http.get('/api/users').then(function(response){
+        return response;
+    })
+}
     this.getUser = function(){
-        return $http.get('/api/users').then(function(response){
+        return $http.get('/api/user').then(function(response){
             return response;
         })
     }
@@ -36,6 +41,17 @@ angular.module('troopApp').service('userService',function($http)
     }
     this.addTripGuest = function(tripid,friend){
         return $http.post(`/api/trips/${tripid}`, {friend}).then(function(response){
+            return response;
+        })
+    }
+    this.getHousing = function(tripid){
+        return $http.get(`/api/housing/${tripid}`).then(function(response){
+            return response;
+        })
+    }
+    this.createHousing = function(tripid,authid,location,price, link,photourl){
+        console.log('service',tripid,authid,location,price, link,photourl)
+        return $http.post('/api/housing', {tripid,authid, location, price, link,photourl}).then(function(response){
             return response;
         })
     }

@@ -2,6 +2,16 @@
         <ul class=navLinks>
             <a href="/auth/me"><li>HOME</li></a>
             <a href="#"><li>ABOUT</li></a>
-            <a href="/auth/logout"><li><img class="usericon" ng-src="{{user[0].photourl}}">{{user[0].user_name}}</li></a>
+            <li>
+                    <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="usericon" ng-src="{{user[0].photourl}}">{{user[0].user_name}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Settings</a>
+                              <a class="dropdown-item" href="/auth/logout">Logout</a>
+                            </div>
+                          </div>
+                </li>
         </ul>
         </div>

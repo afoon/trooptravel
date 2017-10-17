@@ -14,11 +14,12 @@ angular.module('troopApp',['ui.router']).config(function ($stateProvider, $urlRo
             .state('trip', {
                 url: '/trip/:id',
                 templateUrl: 'views/trip.html',
-                // controller: 'mainCtrl'
+                controller: 'tripCtrl'
             })
             .state('housing', {
                 url: '/housing/:id',
                 templateUrl: 'views/housing.html',
+                controller: 'tripCtrl'
             });
             
         $urlRouterProvider

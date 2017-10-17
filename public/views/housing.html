@@ -12,29 +12,52 @@
             </div>
             <div>
                 <!-- begin add housing modal -->
-                <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".bd-example-modal-lg"><img src="../img/add button.png" style="height:75px;"> Add Housing</button>
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".housemodal"><img src="../img/add button.png" style="height:75px;"> Add Housing</button>
+                <div class="modal fade housemodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                     <form>
-                         <div class="form-group">
-                           <label for="price">price</label>
-                           <input type="integer" class="form-control form-control-lg" id="price" aria-describedby="emailHelp" placeholder="PRICE" ng-model="price">
-                         </div>
-                         <div class="form-group">
-                                 <small id="emailHelp" class="form-text text-muted">Price in US Dollars</small>
-                           <label for="address">Address</label>
-                           <input type="text" class="form-control form-control-lg" id="address" ng-model="address" placeholder="ADDRESS">
-                           <label for="links">endDate</label>
-                           <input type="text" class="form-control form-control-lg" id="enddate" ng-model="link" placeholder="LINK">
-                         </div>
-                         <button type="submit" class="btn btn-primary" ng-click="addHousing(user[0].authid,price,address,link)" data-dismiss="modal">Submit</button>
-         
-                       </form>
+                    <div class="modal-content" id="center">
+                        <p class="welcome text-dark"> Add Housing Option for {{currtrip[0].location}}</p>
+                        <form>
+                    
+                                <div class="form-group text-dark">
+                                        <label for="location">Enter location or name of the housing listing</label>
+                                        <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="location">
+                                      </div>
+
+                                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=price>
+                                      </div>
+
+                                      <div class="form-group text-dark">
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" id="link" placeholder="LINK TO HOUSING LISTING" ng-model="link">
+                                      </div>
+
+                                      <div class="form-group text-dark">
+                                            <label for="photourl">Add an image from the housing listing</label>
+                                            <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="photourl">
+                                          </div>
+
+                                          <button type="submit" class="btn btn-secondary" ng-click="createHousing(location,price,link,photourl)" data-dismiss="modal">Submit</button>
+
+                        </form>
                     </div>
                   </div>
                 </div>
                 <!-- end add housing modal -->
+
+            </div>
+        </div>
+        <div class="makeRow">
+                <div class="row tripbox">
+                        <div class="col-sm-4" ng-repeat="house in housing">
+                          <div class="card bg-dark text-white">
+                              <img class="card-img" 
+                               ng-src="{{house.photourl}}" alt="{{house.location}}">
+                              <div class="card-img-overlay tripboxoverlay">
+                               <h1 class="card-title">{{house.location}}</h1>
+                                <p class="card-text">${{(house.price/tripguest.length)}} per person</p>   
             </div>
         </div>
     </div>

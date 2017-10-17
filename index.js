@@ -49,7 +49,7 @@ passport.use(new Auth0Strategy({
     callbackURL:  '/auth/callback'
    }, (accessToken, refreshToken, extraParams, profile, done) => {
      //Find user in database
-     console.log("profile",profile);
+     console.log("profile",profile._json);
      const db = app.get('db');
      // .then means this is a promise
      db.getUserByAuthId([profile._json.sub]).then((user, err) => {
@@ -126,8 +126,10 @@ app.get('/auth/logged', (req, res) => {
 });
 
 app.get('/api/users', ctrl.getAll);
+app.get('/api/user', ctrl.getCurrUser);
 app.get('/api/utrips', ctrl.getUserTrips);
 app.get('/api/currtrip/:tripid', ctrl.getCurrTrip);
+app.get('/api/housing/:tripid', ctrl.getHousing);
 app.get('/api/tripguest/:tripid', ctrl.getTripGuest);
 
 app.post('/api/users',ctrl.createUser);

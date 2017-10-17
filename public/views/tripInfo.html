@@ -10,25 +10,26 @@
                 </div>
                 <div class="makeGuestRow">
                     <div ng-repeat="guest in tripguest" class="makeColumn">
-                        <img class="usericon" ng-src="{{guest.photourl}}">
+                        <img class="usercircle" ng-src="{{guest.photourl}}">
                     </div>
-                </div>
-            </div>
-<!-- add friends modal -->
+                    <!-- add friends modal -->
             <div class="makeRow">
-                    <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".bd-example-modal-lg"><img src="../img/add button.png" style="height:75px;"> Add Friends</button>
+                    <a class="btn btn-primary" id="btn" data-toggle="modal" data-target=".bd-example-modal-lg"><img src="../img/friend.png" style="height: 60px; padding:0px; margin:0px"></button>
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                        <label class="custom-control custom-checkbox" ng-repeat="friend in tripguest">
+                            <div class="modal-dialog modal-lg text-muted">
+                                <div class="modal-content" id="center">
+                                    <h2>Add Friends to {{currtrip[0].location}} trip</h2>
+                                        <label class="custom-control custom-checkbox" ng-repeat="friend in friends">
                                                 <input type="checkbox" class="custom-control-input">
                                                 <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description"><img class="usericon" ng-src="{{friend.photourl}}">{{friend.firstname}} {{friend.lastname}}</span>
+                                                <span class="custom-control-description text-muted"><img class="usericon" ng-src="{{friend.photourl}}">{{friend.user_name}}</span>
                                         </label>
                                 </div>
                             </div>
                         </div>
             </div>
 <!-- modal finished -->
+                </div>
+            </div>
         </div>
     </div>

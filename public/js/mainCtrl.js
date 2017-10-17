@@ -1,4 +1,4 @@
-angular.module('troopApp').controller('mainCtrl',function($scope, $timeout, userService,$stateParams){
+angular.module('troopApp').controller('mainCtrl',function($scope, userService,$stateParams){
     // $scope.test = `Issa Test`;
     $scope.getUser= function(){
     $scope.user = userService.getUser().then( function (response) {
@@ -9,7 +9,6 @@ angular.module('troopApp').controller('mainCtrl',function($scope, $timeout, user
         )
    }
     $scope.getUser();
-console.log($stateParams)
 
 
    function getUserTrips() {
@@ -25,28 +24,4 @@ console.log($stateParams)
            getUserTrips()
         }
     )}
-    function getCurrTrip(tripid) {
-        console.log(tripid)
-        userService.getCurrTrip(tripid).then(function(response){
-            $scope.currtrip = response.data;
-        })
-    }
-    function getTripGuest(tripid) {
-        console.log(tripid)
-        userService.getTripGuest(tripid).then(function(response){
-            console.log('trip guest', response)
-            $scope.tripguest = response.data;
-        })
-    }
-    $scope.addTripGuest = function(tripid,friend){
-        userService.addTripGuest(trip.id,friend).then(
-            function(response){
-           getAddTripGuest()
-        }
-    )}
-    $timeout(function(){
-        getCurrTrip($stateParams.id)
-        getTripGuest($stateParams.id);
-        console.log($stateParams.id)
-    }, 200)
 })

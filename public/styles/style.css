@@ -187,6 +187,7 @@
 }
 body{
     margin: 0;
+    font-family: 'Helvetica Neue';
 }
 .usericon{
     border-radius: 100%;
@@ -197,13 +198,20 @@ body{
 .usercircle{
     width: auto;
     height: 50px;
-    margin: 0;
+    margin: 1px;
+    border-radius: 100%;
     padding: 0;
+    border: rgba(255, 57, 93, 0.336) 2px solid;
 }
 
 #btn{
     background: none;
     border: none;
+}
+#center{
+    padding: 5px 50px;
+    border-right: none;
+    border-left: none;
 }
 .tripbox{
   padding: 5px 0 5px 50px;

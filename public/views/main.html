@@ -8,24 +8,30 @@
      </div>
      <div class="newTrip">
        <!--New Trip Modal   -->
-       <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".bd-example-modal-lg"><img src="../img/add button.png" style="height:75px;"> NEW TRIP</button>
+       <button class="bg-faded btn btn-secondary" id="btn" data-toggle="modal" data-target=".bd-example-modal-lg"><img src="../img/add button.png" style="height:75px;"> NEW TRIP</button>
        
        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-lg">
-           <div class="modal-content">
+           <div class="modal-content" id="center">
             <form>
-                <div class="form-group">
+                <div class="form-group mx-auto">
                   <label for="location">location</label>
+                  <small class="form-text text-muted">Destination Name</small>
                   <input type="location" class="form-control form-control-lg" id="location" aria-describedby="emailHelp" placeholder="LOCATION" ng-model="location">
                 </div>
-                <div class="form-group">
-                        <small id="emailHelp" class="form-text text-muted">Start</small>
+                <div class="form-group row">
+                  <div class="col-sm-6">
                   <label for="dates">startDate</label>
+                  <small id="emailHelp" class="form-text text-muted">Start Date</small>
                   <input type="date" class="form-control form-control-lg" id="startdate" ng-model="startdate" placeholder="Start">
+                  </div>
+                  <div class="col-sm-6">
                   <label for="dates">endDate</label>
+                  <small id="emailHelp" class="form-text text-muted">End Date</small>
                   <input type="date" class="form-control form-control-lg" id="enddate" ng-model="enddate" placeholder="End">
                 </div>
-                <button type="submit" class="btn btn-primary" ng-click="createTrip(user[0].authid,location,startdate,enddate)" data-dismiss="modal">Submit</button>
+                </div>
+                <button type="submit" class="btn btn-secondary" ng-click="createTrip(user[0].authid,location,startdate,enddate)" data-dismiss="modal">Submit</button>
 
               </form>
            </div>
@@ -38,7 +44,7 @@
  <h1 class="tripbox">My Trips</h1>
 <div class="row tripbox">
 <div class="col-sm-4" ng-repeat="trip in trips">
-  <a ui-sref="trip({id:trip.tripid})" ng-click="getTripGuest()"><div class="card bg-dark text-white">
+  <a ui-sref="trip({id:trip.tripid})"><div class="card bg-dark text-white">
       <img class="card-img" src="https://source.unsplash.com/1600x900/?{{trip.location}}" alt="{{trip.location}}">
       <div class="card-img-overlay tripboxoverlay">
        <h1 class="card-title">{{trip.location}}</h1>
