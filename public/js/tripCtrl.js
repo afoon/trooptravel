@@ -29,14 +29,15 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
 
     })
     $scope.createHousing = function(location, price,link,photourl){
-        console.log('tripsCtrl1','location:',location,'photourl:',photourl);
-        userService.createHousing($stateParams.id,$scope.user[0].authid,location,price,link,photourl).then(
+        userService.createHousing($stateParams.id,$scope.user[0].authid,location,price,link,photourl,$scope.user[0].user_name).then(
             function(response){
                 console.log('tripCtrl2',response)
            getHousing()
         }
         )}
     }
+
+
     // $scope.addTripGuest = function($stateParams.id,friend){
     //     userService.addTripGuest(trip.id,friend).then(
     //         function(response){

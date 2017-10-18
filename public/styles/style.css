@@ -71,6 +71,10 @@
     border-bottom-color: #FF5A6A;
     border-bottom-style: solid;
 }
+.navLinks a:hover{
+   color: white;
+   text-decoration: none;
+}
 
 .icon{
     height: 100px;
@@ -166,6 +170,13 @@
     margin-right: 15px;
 
 }
+.triprow{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
 .makeRow{
     display: flex;
     flex-direction: row;
@@ -179,6 +190,8 @@
     justify-content: space-around;
     margin-left: 15px;
     margin-right: 15px;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 .makeColumn{
     display: flex;
@@ -189,6 +202,7 @@ body{
     margin: 0;
     font-family: 'Helvetica Neue';
 }
+
 .usericon{
     border-radius: 100%;
     padding-right: 5px;
@@ -217,6 +231,16 @@ body{
   padding: 5px 0 5px 50px;
   font-weight: 200;
 }
+
+.optionsbox a{
+    text-decoration: none;
+    color: white;
+}
+.optionsbox a:hover{
+    text-decoration-color: #FF5A6A;
+    color: white;
+}
+
 .welcome{
     font-size: 40px;
     display: flex;
@@ -235,6 +259,11 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    font-size: 40px;
+    font-weight: 100;
+    text-align: center;
+    box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.295);
+    margin: 10px;
 }
 .makeGuestRow{
     display: flex;
@@ -248,9 +277,83 @@ body{
     bottom:0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.514);
+    background-color: rgba(0, 0, 0, 0.212);
     height: auto;
     font-family: 'Helvetica Neue';
     font-size: 100%;
     color: white;
+}
+#noMargin{
+    padding: 0;
+    margin-left: -4px;
+    background: none;
+    border: none;
+    border-radius: 100%;
+    border-width: 0; 
+}
+.housingBox{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(252, 252, 252, 0.856);
+    padding: 10px 5px;
+    width: 300px;
+    align-items: center;
+    color: #95989A;
+    margin: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
+}
+.houseImg{
+    width: 250px;
+    height: auto;
+    border: 1px solid #95989A
+}
+.houseTitle{
+    color: #95989A;
+    font-weight: 100;
+    font-size: 20px;
+}
+.votingApp{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.price{
+    display: flex;
+    flex-direction: column;
+    font-weight: 100; 
+    margin: 0;
+}
+.makehousing{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.boxshadow{
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
+    margin: 10px;
+}
+
+.white{
+    flex: column;
+    background: rgba(255, 255, 255, 0.514);
+    justify-content: center;
+    padding: 10px;
+    margin: 70px;
+    max-height: 550px;
+    overflow: scroll;
+}
+
+.editbutton{
+    width: 100px;
+    background: #FF5A6A;
+    color: white;
+    font-weight: 200;
+    border-radius: 25px;
+}
+.default-text{
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
 }

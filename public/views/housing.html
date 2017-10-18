@@ -4,16 +4,16 @@
 <div class="overlaywhite"> 
     <nav-bar></nav-bar>
     <trip-info></trip-info>
-    <div class="newColumn">
+    <div class="white">
         <div class="makeRow">
             <div class="makeRow">
-                <img src="../img/houseIcon.png">
-                <p class="welcome">housing</p>
+                <img src="../img/houseIcon.png" style="height:100px;">
+                <p class="welcome">Housing</p>
             </div>
             <div>
                 <!-- begin add housing modal -->
                 <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".housemodal"><img src="../img/add button.png" style="height:75px;"> Add Housing</button>
-                <div class="modal fade housemodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade housemodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content" id="center">
                         <p class="welcome text-dark"> Add Housing Option for {{currtrip[0].location}}</p>
@@ -23,10 +23,12 @@
                                         <label for="location">Enter location or name of the housing listing</label>
                                         <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="location">
                                       </div>
-
+                                      <div class="form-group text-dark">
+                                            <label for="price">Total Price</label>
                                       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon">$</div>
                                         <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=price>
+                                      </div>
                                       </div>
 
                                       <div class="form-group text-dark">
@@ -49,16 +51,42 @@
 
             </div>
         </div>
+       <div class="makehousing">
+    <div class="housingBox" ng-repeat="house in housing">
+        <div class="makeColumn">
+        <div class="">
+            <img  class="houseImg" src="{{house.photourl}}">
+        </div>
+        <div class="houseTitle">
+           <p>{{house.location}}</p>
+        </div>
         <div class="makeRow">
-                <div class="row tripbox">
-                        <div class="col-sm-4" ng-repeat="house in housing">
-                          <div class="card bg-dark text-white">
-                              <img class="card-img" 
-                               ng-src="{{house.photourl}}" alt="{{house.location}}">
-                              <div class="card-img-overlay tripboxoverlay">
-                               <h1 class="card-title">{{house.location}}</h1>
-                                <p class="card-text">${{(house.price/tripguest.length)}} per person</p>   
-            </div>
+        <div class="votingApp">
+           <img style="height:50px" src="../img/upVote.png">
+           <img style="height:50px" src="../img/downVote.png">
+        </div>
+        <div class="price">
+            <h3>{{house.price/tripguest.length | currency: USD : 2}}&nbsp</h3> 
+            <p>per person</p>
         </div>
     </div>
+        <div>
+                <button class="btn btn-secondary" data-toggle="modal" data-target=".{{house.id}}"> More Info</button>
+                <div class="modal fade {{house.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content" id="center">
+                        <p class="welcome text-dark">{{house.location}}<br>
+                     Submitted By: {{house.submittedby}}
+             </p>
+             <div ng-if="user[0].authid === house.authid || user[0].authid === currtrip[0].admin" class="text-dark">
+                 <button class="editbutton">Edit Housing</button>
+             </div>
+                        
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </div>
+    </div>
 </div>
+

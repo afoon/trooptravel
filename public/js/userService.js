@@ -49,9 +49,9 @@ this.getFriends = function(){
             return response;
         })
     }
-    this.createHousing = function(tripid,authid,location,price, link,photourl){
-        console.log('service',tripid,authid,location,price, link,photourl)
-        return $http.post('/api/housing', {tripid,authid, location, price, link,photourl}).then(function(response){
+    this.createHousing = function(tripid,authid,location,price, link,photourl,submittedby){
+        console.log('service',submittedby)
+        return $http.post('/api/housing', {tripid,authid, location, price, link,photourl,submittedby}).then(function(response){
             return response;
         })
     }

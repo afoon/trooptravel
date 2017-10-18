@@ -40,7 +40,6 @@
 
     const getHousing = (req,res,next) =>{
             const db = req.app.get('db');
-            console.log('housing stuff',req.params.tripid)
             db.getHousing([req.params.tripid]).then(response => 
                 res.status(200).json(response))
         }
@@ -49,7 +48,6 @@
     const getTripGuest = (req,res,next) =>{
         const db = req.app.get('db');
         db.getTripGuest([req.params.tripid]).then(response => {
-            console.log('guest', response)
             res.status(200).json(response)
         })
         .catch(err => {
@@ -85,8 +83,15 @@
     )}
     const createHousing = (req,res,next) =>{
         const db = req.app.get('db');
-        const {tripid,authid,location,price,link,photourl} = req.body;
-        db.createHousing(tripid,authid,location,price,link,photourl).then(response => {
+        const {tripid,authid,location,price,link,photourl,submittedby} = req.body;
+        console.log('photourl',photourl)
+        if (photourl == undefined){
+            var photo = "../img/housing_placeholder.png"
+        }
+        if (photourl != undefined){
+            var photo = photourl;
+        }
+        db.createHousing(tripid,authid,location,price,link,photo,submittedby).then(response => {
             res.status(200).json(response)
         })
         .catch(err => {

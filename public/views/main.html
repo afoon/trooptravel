@@ -44,7 +44,7 @@
  <h1 class="tripbox">My Trips</h1>
 <div class="row tripbox">
 <div class="col-sm-4" ng-repeat="trip in trips">
-  <a ui-sref="trip({id:trip.tripid})"><div class="card bg-dark text-white">
+  <a ui-sref="trip({id:trip.tripid})"><div class="card bg-dark text-white boxshadow">
       <img class="card-img" src="https://source.unsplash.com/1600x900/?{{trip.location}}" alt="{{trip.location}}">
       <div class="card-img-overlay tripboxoverlay">
        <h1 class="card-title">{{trip.location}}</h1>
