@@ -5,6 +5,9 @@
     <nav-bar></nav-bar>
     <trip-info></trip-info>
     <div class="white">
+            <span><button type="button" class="close" aria-label="Close" ui-sref="trip({id:currtrip[0].tripid})">
+                    <span aria-hidden="true">&times;</span>
+                  </button></span>
         <div class="makeRow">
             <div class="makeRow">
                 <img src="../img/houseIcon.png" style="height:100px;">
@@ -41,7 +44,7 @@
                                             <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="photourl">
                                           </div>
 
-                                          <button type="submit" class="btn btn-secondary" ng-click="createHousing(location,price,link,photourl)" data-dismiss="modal">Submit</button>
+                                          <button type="submit" class="btn editbutton" ng-click="createHousing(location,price,link,photourl)" data-dismiss="modal">Submit</button>
 
                         </form>
                     </div>
@@ -52,7 +55,7 @@
             </div>
         </div>
        <div class="makehousing">
-    <div class="housingBox" ng-repeat="house in housing">
+    <div class="housingBox" ng-repeat="house in housing | orderBy: '-upvote'">
         <div class="makeColumn">
         <div class="">
             <img  class="houseImg" src="{{house.photourl}}">
@@ -60,27 +63,36 @@
         <div class="houseTitle">
            <p>{{house.location}}</p>
         </div>
-        <div class="makeRow">
+        <div class="makeRow center">
         <div class="votingApp">
-           <img style="height:50px" src="../img/upVote.png">
-           <img style="height:50px" src="../img/downVote.png">
+            <div class="makeColumn">
+           <img style="height:50px" src="../img/upVote.png" ng-click="upvote(house.id,house.upvote)">{{house.upvote}}
+            </div>
+            <div class="makeColumn">
+           <img style="height:50px" src="../img/downVote.png"  ng-click="downvote(house.id,house.downvote)">{{house.downvote}}
+           </div>
         </div>
         <div class="price">
-            <h3>{{house.price/tripguest.length | currency: USD : 2}}&nbsp</h3> 
-            <p>per person</p>
+            <h3 class="noMargin">{{house.price/tripguest.length | currency: USD : 2}}&nbsp</h3> 
+            <p class="noMargin">per person</p>
         </div>
     </div>
         <div>
                 <button class="btn btn-secondary" data-toggle="modal" data-target=".{{house.id}}"> More Info</button>
                 <div class="modal fade {{house.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
-                    <div class="modal-content" id="center">
+                    <div class="modal-content white" id="center">
+                            <span><button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button></span>
+                                <div class="makeColumn">
                         <p class="welcome text-dark">{{house.location}}<br>
-                     Submitted By: {{house.submittedby}}
+                     <p>Submitted By: {{house.submittedby}}</p>
+                     </p>
              </p>
-             <div ng-if="user[0].authid === house.authid || user[0].authid === currtrip[0].admin" class="text-dark">
-                 <button class="editbutton">Edit Housing</button>
-             </div>
+            <house-edit></house-edit>
+             
+                        </div>
                         
                     </div>
                   </div>

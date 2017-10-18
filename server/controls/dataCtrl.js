@@ -29,9 +29,8 @@
 }
     const getCurrTrip = (req,res,next) =>{
         const db = req.app.get('db');
-        console.log(req.params.tripid)
         db.getCurrTrip([req.params.tripid]).then(response => {
-            res.status(200).json(response)
+            res.status(200).json(response).redirect('/#/main')
         })      .catch(err => {
             res.status(500)} )
         }
@@ -84,7 +83,6 @@
     const createHousing = (req,res,next) =>{
         const db = req.app.get('db');
         const {tripid,authid,location,price,link,photourl,submittedby} = req.body;
-        console.log('photourl',photourl)
         if (photourl == undefined){
             var photo = "../img/housing_placeholder.png"
         }
@@ -99,8 +97,8 @@
     )};
     const updateHousing = (req,res,next) =>{
         const db = req.app.get('db');
-        const {id,name,price,location,link,photourl} = req.body
-        db.updateHousing([id,name,price,location,link,photourl]).then(response => {res.status(200).json(response)
+        const {id,price,location,link,photourl} = req.body
+        db.updateHousingInfo(id,price,location,link,photourl).then(response => {res.status(200).json(response)
         })
         .catch(err => {
         res.status(500);
@@ -108,8 +106,8 @@
 };
     const updateTrip = (req,res,next) =>{
         const db = req.app.get('db');
-        const {id,location,dates} = req.params
-        db.updateTrip([id,location,dates]).then(response => {res.status(200).json(response)
+        const {tripid,location,start,end} = req.body;
+        db.updateTripInfo([tripid,location,start,end]).then(response => {res.status(200).json(response)
         })
         .catch(err => {
         res.status(500);
@@ -117,6 +115,7 @@
     };
     const deleteTrip = (req,res,next) =>{
         const db = req.app.get('db');
+        console.log('delete', req.params.id)
         db.deleteTrip([req.params.id]).then(response => {res.status(200).json(response)
         })
         .catch(err => {
@@ -138,6 +137,19 @@
         .catch(err => res.status(500))
 }
 
+const upvote = (req, res, next) => {
+    const db = req.app.get('db');
+    db.upVote([req.body.id,req.body.upvote]).then(response =>
+        res.status(200).json(response))
+        .catch(err => res.status(500))
+    }
+const downvote = (req, res, next) => {
+        const db = req.app.get('db');
+        db.downVote([req.body.id,req.body.downvote]).then(response =>
+            res.status(200).json(response))
+            .catch(err => res.status(500))
+        }
+
 
 
 
@@ -157,4 +169,6 @@
         updateTrip,
         removeTripUser,
         addTripGuest,
+        upvote,
+        downvote
     }

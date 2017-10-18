@@ -8,7 +8,6 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
     $scope.getFriends= function(){
         $scope.friends = userService.getFriends().then( function (response) {
                 $scope.friends = response.data;
-                console.log('peeps',$scope.friends)
      
         })}
    $scope.tripid= $stateParams.id;
@@ -24,18 +23,52 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
     }
     function getHousing(tripid){
         userService.getHousing($stateParams.id).then(function(response){
-            console.log('trip housing', response)
             $scope.housing = response.data;
 
     })
     $scope.createHousing = function(location, price,link,photourl){
         userService.createHousing($stateParams.id,$scope.user[0].authid,location,price,link,photourl,$scope.user[0].user_name).then(
             function(response){
-                console.log('tripCtrl2',response)
            getHousing()
         }
         )}
     }
+$scope.upvote= function (id,upvote){
+    var newVote = upvote + 1;
+    userService.upvote(id,newVote).then(
+        function(response){
+       getHousing()
+        })
+}
+
+$scope.downvote= function (id,downvote){
+    var newVote = downvote + 1;
+    userService.downvote(id,newVote).then(
+        function(response){
+       getHousing()
+        })
+}
+
+$scope.updateTrip= function (tripid,location,start,end){
+    userService.updateTrip(tripid,location,start,end).then(
+        function(response){
+        })
+}
+
+$scope.updateHousing= function (id,location,price, link,photourl){
+    console.log('update:',id,location,price, link,photourl)
+    userService.updateHousing(id,location,price, link,photourl).then(
+        function(response){
+        })
+}
+
+$scope.deleteTrip = function (tripid){
+    userService.deleteTrip(tripid).then(
+        function (response){
+            return response;
+        })
+}
+
 
 
     // $scope.addTripGuest = function($stateParams.id,friend){

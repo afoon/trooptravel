@@ -3,7 +3,7 @@
             <div class="makeColumn">
                 <h1>{{currtrip[0].location}}</h1>
                 <p class="default-text"> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
-                <button ng-if="user[0].authid == currtrip[0].admin" class="editbutton">Edit Trip</button>
+                <trip-edit></trip-edit>
             </div>
             <div class="makeColumn">
                 <div class="makeRow">
@@ -28,7 +28,7 @@
                             <span class="text-muted"><img class="usericon" ng-src="{{friend.photourl}}">{{friend.user_name}}</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                        <button type="submit" class="btn editbutton" data-dismiss="modal">Submit</button>
         </form>
     </div>
   </div>

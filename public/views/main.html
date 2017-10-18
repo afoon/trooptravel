@@ -13,6 +13,7 @@
        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-lg">
            <div class="modal-content" id="center">
+              <p class="welcome text-dark">Create a New Trip</p>
             <form>
                 <div class="form-group mx-auto">
                   <label for="location">location</label>
@@ -31,7 +32,7 @@
                   <input type="date" class="form-control form-control-lg" id="enddate" ng-model="enddate" placeholder="End">
                 </div>
                 </div>
-                <button type="submit" class="btn btn-secondary" ng-click="createTrip(user[0].authid,location,startdate,enddate)" data-dismiss="modal">Submit</button>
+                <button type="submit" class="btn editbutton" ng-click="createTrip(user[0].authid,location,startdate,enddate)" data-dismiss="modal">Submit</button>
 
               </form>
            </div>
@@ -43,7 +44,7 @@
  <!-- Where Trip is located     -->
  <h1 class="tripbox">My Trips</h1>
 <div class="row tripbox">
-<div class="col-sm-4" ng-repeat="trip in trips">
+<div class="col-sm-4" ng-repeat="trip in trips | orderBy: '-start'">
   <a ui-sref="trip({id:trip.tripid})"><div class="card bg-dark text-white boxshadow">
       <img class="card-img" src="https://source.unsplash.com/1600x900/?{{trip.location}}" alt="{{trip.location}}">
       <div class="card-img-overlay tripboxoverlay">

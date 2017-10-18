@@ -49,19 +49,18 @@ passport.use(new Auth0Strategy({
     callbackURL:  '/auth/callback'
    }, (accessToken, refreshToken, extraParams, profile, done) => {
      //Find user in database
-     console.log("profile",profile._json);
      const db = app.get('db');
      // .then means this is a promise
      db.getUserByAuthId([profile._json.sub]).then((user, err) => {
-         console.log('INITIAL: ', user);
+        //  console.log('INITIAL: ', user);
        if (!user[0]) { //if there isn't a user, we'll create one!
-         console.log('CREATING USER');
+        //  console.log('CREATING USER');
          db.createUserByAuth([profile._json.sub, profile.displayName,profile.picture,profile._json.given_name,profile._json.family_name]).then((user, err) => {
-           console.log('USER CREATED', user[0]);
+          //  console.log('USER CREATED', user[0]);
            return done(err, user[0]); // GOES TO SERIALIZE USER
          })
        } else { //when we find the user, return it
-         console.log('FOUND USER', user[0]);
+        //  console.log('FOUND USER', user[0]);
          return done(err, user[0]);
        }
      });
@@ -75,7 +74,7 @@ passport.use(new Auth0Strategy({
 
 // pull user from session for manipulation
  passport.deserializeUser((user, done) => {
-     console.log(user);
+    //  console.log(user);
      done(null, user);
  });
 
@@ -139,6 +138,8 @@ app.post('/api/trips/:tripid',ctrl.addTripGuest);
 
 app.put('/api/housing/:id', ctrl.updateHousing);
 app.put('/api/trips/:id', ctrl.updateTrip);
+app.put('/api/upvote/:id',ctrl.upvote);
+app.put('/api/downvote/:id',ctrl.downvote);
 
 app.delete('/api/trips/:id', ctrl.deleteTrip);
 app.delete('/api/housing/:id', ctrl.deleteHousing);

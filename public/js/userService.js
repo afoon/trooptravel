@@ -50,8 +50,33 @@ this.getFriends = function(){
         })
     }
     this.createHousing = function(tripid,authid,location,price, link,photourl,submittedby){
-        console.log('service',submittedby)
         return $http.post('/api/housing', {tripid,authid, location, price, link,photourl,submittedby}).then(function(response){
+            return response;
+        })
+    }
+    this.upvote =function(id,upvote){
+        return $http.put(`/api/upvote/${id}`,{id,upvote}).then(function(response){
+            return response;
+        })
+    }
+    this.downvote =function(id,downvote){
+        return $http.put(`/api/downvote/${id}`,{id,downvote}).then(function(response){
+            return response;
+        })
+    }
+    this.updateTrip =function(tripid,location,start,end){
+        return $http.put(`/api/trips/${tripid}`,{tripid,location,start,end}).then(function(response){
+            return response;
+        })
+    }
+    this.deleteTrip = function(tripid){
+        console.log('deleting trip:', tripid);
+        return $http.delete(`/api/trips/${tripid}`).then(function(response){
+            return response;
+        })
+    }
+    this.updateHousing =function(id,location,price, link,photourl){
+        return $http.put(`/api/housing/${id}`,{id,location,price,link,photourl}).then(function(response){
             return response;
         })
     }
