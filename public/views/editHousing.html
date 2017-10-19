@@ -1,36 +1,40 @@
-<button class="btn editbutton" ng-if="user[0].authid === house.authid || user[0].authid === currtrip[0].admin" data-toggle="modal" data-target=".edithousing">Edit</button>
+<button class="btn editbutton" ng-if="user[0].authid === house.authid || user[0].authid === currtrip[0].admin" data-toggle="modal"
+  data-target=".edithousing">Edit</button>
 <div class="modal fade edithousing" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" id="center">
-        <span><button type="button" class="close" aria-label="Close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-          </button></span>
-        <p class="welcome text-dark">Edit Housing Option</p>
-            <form>
-                <div class="form-group text-dark">
-                        <label for="location">Enter location or name of the housing listing</label>
-                        <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="house.location">
-                      </div>
-                      <div class="form-group text-dark">
-                            <label for="price">Total Price</label>
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon">$</div>
-                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=house.price>
-                      </div>
-                      </div>
+      <span>
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </span>
+      <p class="welcome text-dark">Edit Housing Option</p>
+      <form>
+        <div class="form-group fontweight text-dark">
+          <label for="location">Enter location or name of the housing listing</label>
+          <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="house.location">
+        </div>
+        <div class="form-group fontweight text-dark">
+          <label for="price">Total Price</label>
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon">$</div>
+            <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=house.price>
+          </div>
+        </div>
 
-                      <div class="form-group text-dark">
-                        <label for="link">Link</label>
-                        <input type="text" class="form-control" id="link" placeholder="LINK TO HOUSING LISTING" ng-model="house.link">
-                      </div>
+        <div class="form-group fontweight text-dark">
+          <label for="link">Link</label>
+          <input type="text" class="form-control" id="link" placeholder="LINK TO HOUSING LISTING" ng-model="house.link">
+        </div>
 
-                      <div class="form-group text-dark">
-                            <label for="photourl">Add an image from the housing listing</label>
-                            <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="house.photourl">
-                          </div>
+        <div class="form-group fontweight text-dark">
+          <label for="photourl">Add an image from the housing listing</label>
+          <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="house.photourl">
+        </div>
 
-                          <button type="submit" class="btn btn-secondary" ng-click="updateHousing(house.id,house.location,house.price,house.link,house.photourl)" data-dismiss="modal">Submit</button>
-        </form>
+        <button type="submit" class="btn btn-secondary" ng-click="updateHousing(house.id,house.location,house.price,house.link,house.photourl)"
+        >Submit</button>
+      </form>
     </div>
   </div>
 </div>

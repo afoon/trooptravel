@@ -2,48 +2,53 @@
 <div class="modal fade editTripModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" id="center">
-        <span><button type="button" class="close" aria-label="Close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-          </button></span>
-        <div class="makeRow">
+      <span>
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </span>
+      <div class="makeRow">
         <p class="welcome text-dark">Edit Trip to {{currtrip[0].location}}</p>
-  
-       
+          <div class="makeRow">
+          <p class="text-dark">{{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
+      </div>
+
+        <delete-trip></delete-trip>
+
+
+
+
+
+      </div>
+      <div class="makeRow">
+        <!-- Button trigger modal-->
         
 
 
-        </div>
-        <div class="makeRow">
-<!-- Button trigger modal-->
+      </div>
 
-<delete-trip></delete-trip>
-
-        </div>
-        <p class="text-dark">{{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
-        
+      <form>
         <form>
-                <form>
-                        <div class="form-group mx-auto">
-                          <label for="location">location</label>
-                          <small class="form-text text-muted">Destination Name</small>
-                          <input type="location" class="form-control form-control-lg" id="location" aria-describedby="emailHelp" placeholder="LOCATION" ng-model="currtrip[0].location">
-                        </div>
-                        <div class="form-group row">
-                          <div class="col-sm-6">
-                          <label for="dates">startDate</label>
-                          <small id="emailHelp" class="form-text text-muted">Start Date</small>
-                          <input class="form-control form-control-lg" type="date" id="startdate" ng-model="currtrip[0].start">
-                          </div>
-                          <div class="col-sm-6">
-                          <label for="dates">endDate</label>
-                          <small id="emailHelp" class="form-text text-muted">End Date</small>
-                          <input type="date" class="form-control form-control-lg" id="enddate" ng-model="currtrip[0].enddate">
-                        </div>
-                        </div>
-                        <button type="submit" class="btn editbutton" ng-click="updateTrip(currtrip[0].tripid,currtrip[0].location,currtrip[0].start,currtrip[0].enddate)" data-dismiss="modal">Submit</button>
-        
-                      </form>
+          <div class="form-group mx-auto">
+            <small class="form-text text-muted">Destination Name</small>
+            <input type="location" class="form-control form-control-lg" id="location" aria-describedby="emailHelp" placeholder="LOCATION"
+              ng-model="currtrip[0].location">
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <small id="emailHelp" class="form-text text-muted">Start Date</small>
+              <input class="form-control form-control-lg" type="date" id="startdate" ng-model="currtrip[0].start">
+            </div>
+            <div class="col-sm-6">
+              <small id="emailHelp" class="form-text text-muted">End Date</small>
+              <input type="date" class="form-control form-control-lg" id="enddate" ng-model="currtrip[0].enddate">
+            </div>
+          </div>
+          <button type="submit" class="btn editbutton" ng-click="updateTrip(currtrip[0].tripid,currtrip[0].location,currtrip[0].start,currtrip[0].enddate)"
+            data-dismiss="modal">Submit</button>
+
         </form>
+      </form>
     </div>
   </div>
 </div>

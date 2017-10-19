@@ -1,13 +1,15 @@
 <div class="tripbkg" style="background: url('https://source.unsplash.com/1600x900/?{{currtrip[0].location}}')">
 </div>
 <!-- start page content -->
-<div class="overlaywhite"> 
+<div class="overlaywhite">
     <nav-bar></nav-bar>
     <trip-info></trip-info>
     <div class="white">
-            <span><button type="button" class="close" aria-label="Close" ui-sref="trip({id:currtrip[0].tripid})">
-                    <span aria-hidden="true">&times;</span>
-                  </button></span>
+        <span>
+            <button type="button" class="close" aria-label="Close" ui-sref="trip({id:currtrip[0].tripid})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </span>
         <div class="makeRow">
             <div class="makeRow">
                 <img src="../img/houseIcon.png" style="height:100px;">
@@ -15,90 +17,72 @@
             </div>
             <div>
                 <!-- begin add housing modal -->
-                <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".housemodal"><img src="../img/add button.png" style="height:75px;"> Add Housing</button>
+                <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".housemodal">
+                    <img src="../img/add button.png" style="height:75px;"> Add Housing</button>
                 <div class="modal fade housemodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content" id="center">
-                        <p class="welcome text-dark"> Add Housing Option for {{currtrip[0].location}}</p>
-                        <form>
-                    
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" id="center">
+                            <p class="welcome text-dark"> Add Housing Option for {{currtrip[0].location}}</p>
+                            <form>
+
                                 <div class="form-group text-dark">
-                                        <label for="location">Enter location or name of the housing listing</label>
-                                        <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="location">
-                                      </div>
-                                      <div class="form-group text-dark">
-                                            <label for="price">Total Price</label>
-                                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                    <label for="location">Enter location or name of the housing listing</label>
+                                    <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="location">
+                                </div>
+                                <div class="form-group text-dark">
+                                    <label for="price">Total Price</label>
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon">$</div>
                                         <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=price>
-                                      </div>
-                                      </div>
+                                    </div>
+                                </div>
 
-                                      <div class="form-group text-dark">
-                                        <label for="link">Link</label>
-                                        <input type="text" class="form-control" id="link" placeholder="LINK TO HOUSING LISTING" ng-model="link">
-                                      </div>
+                                <div class="form-group text-dark">
+                                    <label for="link">Link</label>
+                                    <input type="text" class="form-control" id="link" placeholder="LINK TO HOUSING LISTING" ng-model="link">
+                                </div>
 
-                                      <div class="form-group text-dark">
-                                            <label for="photourl">Add an image from the housing listing</label>
-                                            <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="photourl">
-                                          </div>
+                                <div class="form-group text-dark">
+                                    <label for="photourl">Add an image from the housing listing</label>
+                                    <input type="text" class="form-control" id="photourl" placeholder="LINK TO HOUSING PHOTO (optional)" ng-model="photourl">
+                                </div>
 
-                                          <button type="submit" class="btn editbutton" ng-click="createHousing(location,price,link,photourl)" data-dismiss="modal">Submit</button>
+                                <button type="submit" class="btn editbutton" ng-click="createHousing(location,price,link,photourl)" data-dismiss="modal">Submit</button>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <!-- end add housing modal -->
 
             </div>
         </div>
-       <div class="makehousing">
-    <div class="housingBox" ng-repeat="house in housing | orderBy: '-upvote'">
-        <div class="makeColumn">
-        <div class="">
-            <img  class="houseImg" src="{{house.photourl}}">
-        </div>
-        <div class="houseTitle">
-           <p>{{house.location}}</p>
-        </div>
-        <div class="makeRow center">
-        <div class="votingApp">
-            <div class="makeColumn">
-           <img style="height:50px" src="../img/upVote.png" ng-click="upvote(house.id,house.upvote)">{{house.upvote}}
-            </div>
-            <div class="makeColumn">
-           <img style="height:50px" src="../img/downVote.png"  ng-click="downvote(house.id,house.downvote)">{{house.downvote}}
-           </div>
-        </div>
-        <div class="price">
-            <h3 class="noMargin">{{house.price/tripguest.length | currency: USD : 2}}&nbsp</h3> 
-            <p class="noMargin">per person</p>
-        </div>
-    </div>
-        <div>
-                <button class="btn btn-secondary" data-toggle="modal" data-target=".{{house.id}}"> More Info</button>
-                <div class="modal fade {{house.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content white" id="center">
-                            <span><button type="button" class="close" aria-label="Close" data-dismiss="modal">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button></span>
-                                <div class="makeColumn">
-                        <p class="welcome text-dark">{{house.location}}<br>
-                     <p>Submitted By: {{house.submittedby}}</p>
-                     </p>
-             </p>
-            <house-edit></house-edit>
-             
-                        </div>
-                        
+        <div class="makehousing">
+            <div class="housingBox" ng-repeat="house in housing | orderBy: '-upvote'">
+                <div class="makeColumn">
+                    <div class="">
+                        <img class="houseImg" src="{{house.photourl}}">
                     </div>
-                  </div>
+                    <div class="houseTitle">
+                        <p>{{house.location}}</p>
+                    </div>
+                    <div class="makeRow center">
+                        <div class="votingApp">
+                            <div class="makeColumn">
+                                <img style="height:50px" src="../img/upVote.png" ng-click="upvote(house.id,house.upvote)">{{house.upvote}}
+                            </div>
+                            <div class="makeColumn">
+                                <img style="height:50px" src="../img/downVote.png" ng-click="downvote(house.id,house.downvote)">{{house.downvote}}
+                            </div>
+                        </div>
+                        <div class="price">
+                            <h3 class="noMargin">{{house.price/tripguest.length | currency: USD : 2}}&nbsp</h3>
+                            <p class="noMargin">per person</p>
+                        </div>
+                    </div>
+                    <div>
+                       <house-modal></house-modal>
+                    </div>
                 </div>
+            </div>
         </div>
-    </div>
-    </div>
-</div>
-

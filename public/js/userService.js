@@ -39,8 +39,9 @@ this.getFriends = function(){
             return response;
         })
     }
-    this.addTripGuest = function(tripid,friend){
-        return $http.post(`/api/trips/${tripid}`, {friend}).then(function(response){
+    this.addTripGuest = function(tripid,authid){
+        console.log('Service', tripid,authid)
+        return $http.post(`/api/trips/${tripid}`, {authid}).then(function(response){
             return response;
         })
     }

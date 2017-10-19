@@ -2,9 +2,10 @@
         <ul class=navLinks>
             <a href="/auth/me"><li>HOME</li></a>
             <a href="#"><li>ABOUT</li></a>
-            <li>
+            <a  ng-if="user[0].authid == null"href="/auth/logged"><li>LOGIN</li></a>
+            <li ng-if="user[0].authid != null">
                     <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:100;">
                                     <img class="usericon" ng-src="{{user[0].photourl}}">{{user[0].user_name}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

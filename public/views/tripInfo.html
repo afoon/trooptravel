@@ -1,41 +1,25 @@
 <div class="newColumn">
-        <div class="makeRow">
-            <div class="makeColumn">
-                <h1>{{currtrip[0].location}}</h1>
-                <p class="default-text"> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
-                <trip-edit></trip-edit>
+    <div class="makeRow">
+        <div class="makeColumn">
+            <h1>{{currtrip[0].location}}</h1>
+            <p class="default-text"> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
+            <trip-edit></trip-edit>
+        </div>
+        <div class="makeColumn">
+            <div class="makeRow">
+                <p ng-if="tripguest.length <= 1" style="margin: 0px">There is 1 Person on this trip</p>
+                <p ng-if="tripguest.length > 1" style="margin: 0px">There are {{tripguest.length}} People on this trip</p>
             </div>
-            <div class="makeColumn">
-                <div class="makeRow">
-                    <p ng-if="tripguest.length <= 1" style="margin: 0px">There is 1 Person on this trip</p>
-                    <p ng-if="tripguest.length > 1" style="margin: 0px">There are {{tripguest.length}} People on this trip</p>
+            <div class="makeGuestRow">
+                <div ng-repeat="guest in tripguest | limitTo: 5" class="makeColumn">
+                    <img class="usercircle" ng-src="{{guest.photourl}}" data-toggle="popover" data-content="{{guest.user_name}}">
                 </div>
-                <div class="makeGuestRow">
-                    <div ng-repeat="guest in tripguest" class="makeColumn">
-                        <img class="usercircle" ng-src="{{guest.photourl}}">
-                    </div>
-                    <!-- add friends modal -->
-                      <!-- add friends modal -->
-<button class="btn btn-seconday" id="noMargin" data-toggle="modal" data-target=".friendsmodal"><img src="../img/friend.png" style="height: 60px; padding:0px; margin:0px"></button>
-<div class="modal fade friendsmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" id="center">
-        <p class="welcome text-dark">Add Friends to {{currtrip[0].location}} trip</p>
-        <form>
-                <div class="form-check"  ng-repeat="friend in friends">
-                    <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" value="">
-                            <span class="text-muted"><img class="usericon" ng-src="{{friend.photourl}}">{{friend.user_name}}</span>
-                            </label>
+                <div class="makeGuestRow plusguest" ng-if="tripguest.length > 5">
+                        +{{tripguest.length-5}}
                         </div>
-                        <button type="submit" class="btn editbutton" data-dismiss="modal">Submit</button>
-        </form>
-    </div>
-  </div>
-</div>
-                <!-- modal finished -->
-<!-- modal finished -->
-                </div>
+                <!-- Add Friends Modal -->
+                <add-friends></add-friends>
             </div>
         </div>
     </div>
+</div>

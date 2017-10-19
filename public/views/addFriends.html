@@ -1,0 +1,20 @@
+<button class="btn btn-seconday" id="noMargin" data-toggle="modal" data-target=".friendsmodal">
+    <img src="../img/friend.png" style="height: 60px; padding:0px; margin:0px">
+</button>
+<div class="modal fade friendsmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="center">
+            <p class="welcome text-dark">Add Friends to {{currtrip[0].location}} trip</p>
+            <form>
+                <div class="form-check" ng-repeat="friend in friends" >
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" ng-click="addTripGuest(currtrip[0].tripid,friend.authid)" >
+                        <span class="text-muted">
+                            <img class="usericon" ng-src="{{friend.photourl}}">{{friend.user_name}}</span>
+                    </label>
+                </div>
+                <button class="btn editbutton" data-dismiss="modal">Done</button>
+            </form>
+        </div>
+    </div>
+</div>

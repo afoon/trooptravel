@@ -25,7 +25,12 @@ $(document).ready(function(){
 
 
 
-
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+      })
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      }) 
 
 
 //     console.log(document.getElementById('bg1'))

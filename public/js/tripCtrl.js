@@ -6,10 +6,17 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
  
     })}
     $scope.getFriends= function(){
-        $scope.friends = userService.getFriends().then( function (response) {
-                $scope.friends = response.data;
-     
-        })}
+        getTripGuest().then(function (response){
+            $scope.friends = userService.getFriends().then( function (response) {
+                console.log('get friends starting')
+                    $scope.friends = response.data.filter(friend => {
+                        var tempGuest = $scope.tripguest.find(guest => guest.authid == friend.authid);
+                        return tempGuest? false: true;
+                    })
+         
+            })
+        })
+}
    $scope.tripid= $stateParams.id;
     function getCurrTrip(tripid) {
         userService.getCurrTrip($stateParams.id).then(function(response){
@@ -17,7 +24,7 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
         })
     }
     function getTripGuest(tripid) {
-        userService.getTripGuest($stateParams.id).then(function(response){
+        return userService.getTripGuest($stateParams.id).then(function(response){
             $scope.tripguest = response.data;
         })
     }
@@ -33,6 +40,18 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
         }
         )}
     }
+    
+    $scope.addTripGuest = function(tripid,authid){
+        console.log('Trip Ctrl', tripid,authid)
+        userService.addTripGuest(tripid,authid).then(
+            function(response){
+           getTripGuest();
+            }
+        )
+    }
+    
+
+    
 $scope.upvote= function (id,upvote){
     var newVote = upvote + 1;
     userService.upvote(id,newVote).then(
@@ -53,12 +72,14 @@ $scope.updateTrip= function (tripid,location,start,end){
     userService.updateTrip(tripid,location,start,end).then(
         function(response){
         })
+        $('.editTripModal').modal('hide');
 }
 
 $scope.updateHousing= function (id,location,price, link,photourl){
     console.log('update:',id,location,price, link,photourl)
     userService.updateHousing(id,location,price, link,photourl).then(
         function(response){
+            $('.edithousing').modal('hide');
         })
 }
 
@@ -67,6 +88,8 @@ $scope.deleteTrip = function (tripid){
         function (response){
             return response;
         })
+        $('#modalConfirmDelete').modal('hide');
+        $('.editTripModal').modal('hide');
 }
 
 
