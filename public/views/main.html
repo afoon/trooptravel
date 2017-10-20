@@ -16,18 +16,15 @@
               <p class="welcome text-dark">Create a New Trip</p>
             <form>
                 <div class="form-group mx-auto">
-                  <label for="location">location</label>
                   <small class="form-text text-muted">Destination Name</small>
                   <input type="location" class="form-control form-control-lg" id="location" aria-describedby="emailHelp" placeholder="LOCATION" ng-model="location">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6">
-                  <label for="dates">startDate</label>
                   <small id="emailHelp" class="form-text text-muted">Start Date</small>
                   <input type="date" class="form-control form-control-lg" id="startdate" ng-model="startdate" placeholder="Start">
                   </div>
                   <div class="col-sm-6">
-                  <label for="dates">endDate</label>
                   <small id="emailHelp" class="form-text text-muted">End Date</small>
                   <input type="date" class="form-control form-control-lg" id="enddate" ng-model="enddate" placeholder="End">
                 </div>
@@ -48,7 +45,7 @@
   <a ui-sref="trip({id:trip.tripid})"><div class="card bg-dark text-white boxshadow">
       <img class="card-img" src="https://source.unsplash.com/1600x900/?{{trip.location}}" alt="{{trip.location}}">
       <div class="card-img-overlay tripboxoverlay">
-       <h1 class="card-title">{{trip.location}}</h1>
+       <h1 class="trip-title">{{trip.location}}</h1>
         <p class="card-text"> {{trip.start | date:'MMM d, yyyy'}} - {{trip.enddate | date:'MMM d, yyyy'}}</p>
       </div>
     </div></a>

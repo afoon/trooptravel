@@ -1,6 +1,6 @@
 angular.module('troopApp').directive('deleteTrip',function(){
     return {
-        templateUrl: '../views/deleteModal.html',
+        templateUrl: '../views/modals/deleteModal.html',
 
 
     }

@@ -71,8 +71,13 @@ this.getFriends = function(){
         })
     }
     this.deleteTrip = function(tripid){
-        console.log('deleting trip:', tripid);
         return $http.delete(`/api/trips/${tripid}`).then(function(response){
+            return response;
+        })
+    }
+    this.removeTripUser = function(id){
+        console.log('Srv',id);
+        return $http.delete(`/api/guest/${id}`).then(function(response){
             return response;
         })
     }

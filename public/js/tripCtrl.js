@@ -91,6 +91,14 @@ $scope.deleteTrip = function (tripid){
         $('#modalConfirmDelete').modal('hide');
         $('.editTripModal').modal('hide');
 }
+$scope.removeTripUser = function (id){
+    console.log('TripCtrl', id)
+    userService.removeTripUser(id).then(
+        function (response){
+            return response;
+        })
+        getTripGuest();
+    }
 
 
 

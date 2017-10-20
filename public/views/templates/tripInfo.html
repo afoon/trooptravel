@@ -1,0 +1,47 @@
+<div class="newColumn">
+    <div class="makeRow">
+        <div class="makeColumn">
+            <h1>{{currtrip[0].location}}</h1>
+            <p class="default-text"> {{currtrip[0].start | date:'MMM d, yyyy'}} - {{currtrip[0].enddate | date:'MMM d, yyyy'}}</p>
+            <trip-edit></trip-edit>
+        </div>
+        <div class="makeColumn">
+            <div class="makeRow">
+                <p ng-if="tripguest.length <= 1" style="margin: 0px">There is 1 Person on this trip</p>
+                <p ng-if="tripguest.length > 1" style="margin: 0px">There are {{tripguest.length}} People on this trip</p>
+            </div>
+            <div class="makeGuestRow">
+                <div ng-repeat="guest in tripguest | limitTo: 5" class="makeColumn">
+                    <a data-toggle="modal" data-target=".seefriendsmodal"><img class="usercircle" ng-src="{{guest.photourl}}" data-toggle="popover" data-content="{{guest.user_name}}"></a>
+                </div>
+                <div class="makeGuestRow plusguest" ng-if="tripguest.length > 5">
+                       <see-friends>
+                        </div>
+                <!-- Add Friends Modal -->
+                <add-friends></add-friends>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade seefriendsmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="center">
+                    <span>
+                            <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
+                <p class="welcome text-dark">Guest on Trip to {{currtrip[0].location}}</p>
+                    <div ng-repeat="guest in tripguest"class="housing-text text-dark" >
+                               <span><img class="usericon" ng-src="{{guest.photourl}}">{{guest.user_name}}&nbsp</span>
+                               <button class="btn btn-danger"  id="desktop-remove"  ng-click="removeTripUser(guest.id)" ng-if="user[0].authid==guest.authid && user[0].authid != currtrip[0].admin">X</button>
+                               <button class="btn btn-danger" id="desktop-remove" ng-click="removeTripUser(guest.id)" ng-if="user[0].authid == currtrip[0].admin && guest.authid != currtrip[0].admin">X</button>
+                               <button class="btn btn-danger"  id="mobile-remove"  ng-click="removeTripUser(guest.id)" ng-if="user[0].authid==guest.authid && user[0].authid != currtrip[0].admin">Leave This Trip</button>
+                               <button class="btn btn-danger"  id="mobile-remove"  ng-click="removeTripUser(guest.id)" ng-if="user[0].authid == currtrip[0].admin && guest.authid != currtrip[0].admin">Remove Guest</button>
+                    </div>
+                    <button class="btn editbutton" data-dismiss="modal">Done</button>
+    
+            </div>
+        </div>
+    </div>

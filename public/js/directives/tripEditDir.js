@@ -1,6 +1,6 @@
 angular.module('troopApp').directive('tripEdit',function(){
     return {
-        templateUrl: '../views/tripEdit.html',
+        templateUrl: '../views/modals/tripEdit.html',
 
 
     }

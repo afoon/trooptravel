@@ -190,7 +190,7 @@ const deleteHousing = (req, res, next) => {
 
 const removeTripUser = (req, res, next) => {
   const db = req.app.get("db");
-
+  console.log('deleting guest:',req.params.id);
   db
     .removeTripUser([req.params.id])
     .then(response => res.status(200).json(response))

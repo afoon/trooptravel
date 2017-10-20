@@ -143,7 +143,7 @@ app.put('/api/downvote/:id',ctrl.downvote);
 
 app.delete('/api/trips/:id', ctrl.deleteTrip);
 app.delete('/api/housing/:id', ctrl.deleteHousing);
-app.delete('/api/trips/:id', ctrl.removeTripUser);
+app.delete('/api/guest/:id', ctrl.removeTripUser);
 
 
 app.listen( port, () => { console.log(`Andre ${port}`); } );

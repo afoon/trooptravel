@@ -1,14 +1,32 @@
-.backgroundImage{
-    background: no-repeat center bottom scroll; 
+body{
+    margin: 0;
+    font-family: 'Helvetica Neue';
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+.mainbkg{
+    background: no-repeat center bottom scroll url('https://source.unsplash.com/collection/158643/1600x900'); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
+    width: 100%;
     padding-top: 2%;
-    font-size: 100%; 
-    transition-duration: 500ms;
-
+    position: fixed;
+    top: 0;
+    font-size: 100%;
+    color: white;
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-direction: column;
+    filter: blur(5px)
+}
+.empty{
+    float: left;
+    width:50%;
 }
 .overlayblack{
     position: absolute;
@@ -39,128 +57,18 @@
     flex-direction: column;
 }
 
-.navLinks, li{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    list-style-type: none;
-    margin: 20px,0,0,0;
-    padding: 0;
-    font-family: 'Helvetica Neue';
-    color: White;
-}
-.nav{
-    background-color: rgba(0, 0, 0, 0.38);
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
-    width: 100%;
-    position: fixed;
-    top: 0;
-}
-
-.navLinks,a{
-    text-decoration: none;
-    font-weight: 100;
-    letter-spacing: 1.5px;
-}
-
-.navLinks li:hover{
-    border-bottom: 2px;
-    border-bottom-color: #FF5A6A;
-    border-bottom-style: solid;
-}
-.navLinks a:hover{
-   color: white;
-   text-decoration: none;
-}
-
-.icon{
-    height: 100px;
-    width: auto;
-}
-
-.loginBox{
-    margin: 100px 150px;
-    padding: 100px 20px;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.79);
-    width: 50%;
-    align-items: center;
-    text-align: center;
-    color: #95989A;
-    float: right;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
-}
-.getStarted{
-    border: 2px solid none;
-    border-radius: 25px;
-    padding: 3px 40px;
-    background-color: #FF5A6A;
-    color: white;
-    font-weight: 200;
-    letter-spacing: 1px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
-}
-.getStarted:hover{
-    background-color: rgb(252, 102, 117);
-}
 
 .hideme{
     display: none;
 }
-.mainbkg{
-    background: no-repeat center bottom scroll url('https://source.unsplash.com/collection/158643/1600x900'); 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    padding-top: 2%;
-    position: fixed;
-    top: 0;
-    font-size: 100%;
-    color: white;
-    font-family: 'Helvetica Neue';
-    display: flex;
-    flex-direction: column;
-    filter: blur(5px)
-}
-.tripbkg{
-    background: no-repeat center bottom scroll; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    padding-top: 2%;
-    position: fixed;
-    top: 0;
-    font-size: 100%;
-    color: white;
-    font-family: 'Helvetica Neue';
-    display: flex;
-    flex-direction: column;
-    filter: blur(5px)
-}
 
-.newTrip{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 
-}
 .newView{
     display: flex;
     flex-direction: row;
     margin-top:70px;
     justify-content: space-around;
+    flex-wrap: wrap;    
 
 }
 .newRow{
@@ -170,19 +78,14 @@
     justify-content: space-around;
     margin-left: 15px;
     margin-right: 15px;
+    flex-wrap: wrap;    
+}
 
-}
-.triprow{
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-    flex-wrap: wrap;
-    align-content: center;
-}
 .makeRow{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;    
 
 }
 .newColumn{
@@ -199,25 +102,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-body{
-    margin: 0;
-    font-family: 'Helvetica Neue';
-}
-
-.usericon{
-    border-radius: 100%;
-    padding-right: 5px;
-    width: auto;
-    height: 30px;
-}
-.usercircle{
-    width: auto;
-    height: 50px;
-    margin: 1px;
-    border-radius: 100%;
-    padding: 0;
-    border: #FF5A6A 1px solid;
+    flex-wrap: wrap;    
 }
 
 #btn{
@@ -228,63 +113,9 @@ body{
     padding: 5px 50px;
     border-right: none;
     border-left: none;
-}
-.tripbox{
-  padding: 5px 0 5px 50px;
-  font-weight: 200;
-}
-
-.optionsbox a{
-    text-decoration: none;
-    color: white;
-}
-.optionsbox a:hover{
-    text-decoration-color: #FF5A6A;
-    color: white;
-}
-
-.welcome{
-    font-size: 40px;
-    display: flex;
-    flex-direction: row;
-    font-weight: 100;
-    align-content: bottom;
-}
-.name{
-    font-weight: 300;
-}
-.optionsbox{
-    background: rgba(255, 255, 255, 0.329);
-    width: 500px;
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: 100;
-    text-align: center;
-    box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.295);
-    margin: 10px;
 }
-.makeGuestRow{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
 
-}
-.tripboxoverlay{
-    position: absolute;
-    top:0;
-    bottom:0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.212);
-    height: auto;
-    font-family: 'Helvetica Neue';
-    font-size: 100%;
-    color: white;
-}
 #noMargin{
     padding: 0;
     margin-left: -4px;
@@ -292,48 +123,9 @@ body{
     border: none;
     border-radius: 100%;
     border-width: 0; 
-}
-.housingBox{
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(252, 252, 252, 0.856);
-    padding: 10px 5px;
-    width: 300px;
-    align-items: center;
-    color: #95989A;
-    margin: 10px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
-}
-.houseImg{
-    width: 250px;
-    height: auto;
-    border: 1px solid #95989A
-}
-.houseTitle{
-    color: #95989A;
-    font-weight: 100;
-    font-size: 20px;
-}
-.votingApp{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    text-align: center;
-}
-.price{
-    display: flex;
-    flex-direction: column;
-    font-weight: 100; 
-    margin: 0;
-    align-items: center;
-}
-.makehousing{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
     flex-wrap: wrap;
-    overflow: auto;
 }
+
 .boxshadow{
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
     margin: 10px;
@@ -344,10 +136,14 @@ body{
     background: rgba(255, 255, 255, 0.514);
     justify-content: center;
     padding: 10px;
-    margin: 70px;
+    margin: 50px;
     max-height: 550px;
     overflow: scroll;
 }
+@media (max-width:970px){
+    .white{
+        margin: 10px;
+    }}
 
 .editbutton{
     width: 100px;
@@ -356,6 +152,16 @@ body{
     font-weight: 200;
     border-radius: 25px;
 }
+
+@media (max-width:970px){
+    #mobile-remove{
+display: none;
+    }}
+@media (min-width:970px){
+        #desktop-remove{
+    display: none;
+        }}  
+
 .default-text{
     font-size: 30px;
     color: white;
@@ -371,19 +177,28 @@ body{
     border: none;
     border-width: 0; 
 }
-.plusguest{
-    background: #FF5A6A;
-    border-radius: 100%;
-    width: 50px;
-    height: 50px;
-    margin: 1px;
-    border-radius: 100%;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-}
+
 .fontweight{
     font-weight: 200;
     font-size: 16px;
 }
+
+.menu a:hover{
+background: #FF5A6A;
+color: white;
+}
+.scroll{
+    overflow: scroll;
+}
+.welcome{
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    align-content: bottom;
+    flex-wrap: wrap;
+}
+@media (max-width:970px){
+    .newView{
+margin: 70px 20px 0px 20px;
+    }}  

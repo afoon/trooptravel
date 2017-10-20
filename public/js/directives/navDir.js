@@ -1,6 +1,6 @@
 angular.module('troopApp').directive('navBar',function(){
     return {
-        templateUrl: '../views/navBar.html',
+        templateUrl: '../views/templates/navBar.html',
 
 
     }

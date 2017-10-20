@@ -1,0 +1,104 @@
+.tripbkg{
+    background: no-repeat center bottom scroll; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    padding-top: 2%;
+    position: fixed;
+    top: 0;
+    font-size: 100%;
+    color: white;
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-direction: column;
+    filter: blur(5px)
+}
+
+
+.name{
+    font-weight: 300;
+}
+
+.newTrip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.optionsbox{
+    background: rgba(255, 255, 255, 0.329);
+    width: 500px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 100;
+    text-align: center;
+    box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.295);
+    margin: 10px;
+}
+.optionsbox a{
+    text-decoration: none;
+    color: white;
+}
+.optionsbox a:hover{
+    text-decoration-color: #FF5A6A;
+    color: white;
+}
+.triprow{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.tripbox{
+    padding: 5px 0 5px 50px;
+    font-weight: 200;
+    flex-wrap: wrap;    
+  }
+  
+
+.tripboxoverlay{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.212);
+    height: auto;
+    font-family: 'Helvetica Neue';
+    font-size: 100%;
+    color: white;
+}
+
+.trip-title{
+    font-weight: 500;
+}
+  
+@media (max-width:970px){
+    .optionsbox img{
+        width: 50px;
+    }
+    .optionsbox p{
+        font-size: 16px;
+    }
+    .desktop-friendly{
+        display:none;
+    }
+    .tripboxoverlay{
+        font-size: 90%;
+    }
+    .trip-title{
+        font-size: 24px;
+    }
+    .tripbox{
+          padding: 0 10px 10px;
+    }
+}

@@ -27,6 +27,39 @@ angular.module('troopApp',['ui.router']).config(function ($stateProvider, $urlRo
                 },
         
             })
+            .state('transport', {
+                url: '/transport/:id',
+                templateUrl: 'views/transport.html',
+                controller: 'tripCtrl',
+                resolve: {
+                    transport: (userService, $state) => userService.getUser()
+                        .then(response => response.data)
+                        .catch(err => $state.go('login'))
+                },
+        
+            })
+            .state('activities', {
+                url: '/activities/:id',
+                templateUrl: 'views/activities.html',
+                controller: 'tripCtrl',
+                resolve: {
+                    activities: (userService, $state) => userService.getUser()
+                        .then(response => response.data)
+                        .catch(err => $state.go('login'))
+                },
+        
+            })
+            .state('rules', {
+                url: '/rules/:id',
+                templateUrl: 'views/guidelines.html',
+                controller: 'tripCtrl',
+                resolve: {
+                    rules: (userService, $state) => userService.getUser()
+                        .then(response => response.data)
+                        .catch(err => $state.go('login'))
+                },
+        
+            })
             .state('housing', {
                 url: '/housing/:id',
                 templateUrl: 'views/housing.html',

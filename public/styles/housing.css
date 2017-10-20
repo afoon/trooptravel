@@ -1,0 +1,75 @@
+.housingBox{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(252, 252, 252, 0.856);
+    padding: 10px 5px;
+    width: 300px;
+    align-items: center;
+    color: #95989A;
+    margin: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.47);
+    flex-wrap: wrap;    
+}
+.houseImg{
+    width: 250px;
+    height: auto;
+    border: 1px solid #95989A
+}
+.houseTitle{
+    color: #95989A;
+    font-weight: 100;
+    font-size: 20px;
+}
+.makehousing{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.plusguest{
+    background: #FF5A6A;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    margin: 1px;
+    border-radius: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+.price{
+    display: flex;
+    flex-direction: column;
+    font-weight: 100; 
+    margin: 0;
+    align-items: center;
+}
+
+
+.votingApp{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    text-align: center;
+}
+.votingApp{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    text-align: center;
+}
+.housing-text{
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    align-content: bottom;
+    flex-wrap: wrap;
+}
+@media (max-width:970px){
+    .housing-text{
+        font-size: 16px;
+        font-weight: 200;
+    }}
