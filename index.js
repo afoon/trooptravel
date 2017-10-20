@@ -5,10 +5,10 @@ const massive = require('massive');
 const cors = require('cors');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
-const {domain,secret,dbUser, database,client,clSecret} = require('./config');
+const {domain,secret,dbUser, database,client,clSecret, access} = require('./config');
 
 
-const connectionString = `postgres://${dbUser}@localhost/${database}`
+const connectionString = access;
 const request = require('request');
 
 const port = 3000;
