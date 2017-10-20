@@ -1,0 +1,1 @@
+INSERT INTO user_trips (authid,tripid) VALUES ($1,$2);
