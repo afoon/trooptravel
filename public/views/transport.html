@@ -11,5 +11,24 @@
                         <img src="../img/transportation.png" style="height:100px;">
                         <p class="welcome">Transportation</p>
                     </div>
+                    <transport-modal></transport-modal>
+                    <div class="makehousing">
+                            <div class="housingBox">
+                                <div class="makeColumn">
+                                    <div class="">
+                                        <img class="houseImg" src="../img/transportation.png">
+                                    </div>
+                                    <div class="houseTitle">
+                                        <p>Atlanta to Detroit</p>
+                                        <p>Depart 3:00pm - Arrive 5:00pm </p>
+                                    </div>
+                                    <div class="makeGuestRow">
+                                            <div ng-repeat="guest in tripguest | limitTo: 5" class="makeColumn">
+                                                <img class="usercircle" ng-src="{{guest.photourl}}" data-toggle="popover" data-content="{{guest.user_name}}">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
     </div>
 </div>

@@ -1,0 +1,1 @@
+SELECT * FROM friends WHERE main=$1 AND friend=$2;

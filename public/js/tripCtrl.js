@@ -8,16 +8,16 @@ angular.module('troopApp').controller('tripCtrl',function($scope, $timeout, user
     $scope.getFriends= function(){
         getTripGuest().then(function (response){
             $scope.friends = userService.getFriends().then( function (response) {
-                console.log('get friends starting')
+                console.log('get friends starting,', response)
                     $scope.friends = response.data.filter(friend => {
-                        var tempGuest = $scope.tripguest.find(guest => guest.authid == friend.authid);
+                        var tempGuest = $scope.tripguest.find(guest => guest.authid == friend.friend);
                         return tempGuest? false: true;
                     })
          
             })
         })
 }
-   $scope.tripid= $stateParams.id;
+
     function getCurrTrip(tripid) {
         userService.getCurrTrip($stateParams.id).then(function(response){
             $scope.currtrip = response.data;

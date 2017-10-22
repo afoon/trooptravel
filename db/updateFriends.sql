@@ -1,0 +1,1 @@
+INSERT INTO friends (main,friend) VALUES ($1,$2);

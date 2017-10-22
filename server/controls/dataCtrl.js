@@ -1,7 +1,7 @@
 const getAll = (req, res, next) => {
   const db = req.app.get("db");
   db
-    .getAll()
+    .getAll(req.user.authid)
     .then(response => {
       res.status(200).json(response);
     })

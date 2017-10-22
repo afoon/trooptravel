@@ -1,36 +1,46 @@
-<button class="btn btn-secondary" data-toggle="modal" data-target=".{{house.id}}"> More Info</button>
-<div class="modal fade {{house.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content scroll" id="center">
-            <span>
-                <button type="button" class="close" aria-label="Close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </span>
-            <div class="makeColumn">
-                <p class="welcome text-dark">{{house.location}} <span><house-edit></house-edit></span></p>
-                    <p>Submitted By: {{house.submittedby}} </p>
-                    <div class="makeRow">
-                <div class="makeColumn">
-                    <div class="">
-                        <img class="houseImg" src="{{house.photourl}}">
-                    </div>
-                    <div class="votingApp">
-                        <div class="makeColumn">
-                            <img style="height:50px" src="../img/upVote.png" ng-click="upvote(house.id,house.upvote)">{{house.upvote}}
-                        </div>
-                        <div class="makeColumn">
-                            <img style="height:50px" src="../img/downVote.png" ng-click="downvote(house.id,house.downvote)">{{house.downvote}}
-                        </div>
-                    </div>
-                </div>
-                <div class="makeColumn default-text text-muted">
-                    <p>Price: {{house.price | currency: USD : 2}}<br>
-                    <a target="_blank" href="{{house.link}}">Link To Housing</a>
-                    </p>
-                </div>
-            </div>
-</div>
+<button class="btn editbutton"  data-toggle="modal"
+data-target=".addTransit">Edit</button>
+<div class="modal fade addTransit" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content" id="center">
+    <span>
+      <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
+    <p class="welcome text-dark">Add Transportation</p>
+    <form>
+      <div class="form-group fontweight text-dark">
+        <label for="type">Choose a Type of Transportation</label>
+        <select type="text" class="form-control" id="type" placeholder="Choose Transportation" ng-model="type">
+            <option>Plane</option>
+            <option>Car</option>
+        </select>
+      </div>
+      <div class="form-group row fontweight text-dark">
+        <div class="col-sm-6">
+          <label for="departurelocation">Departing From</label>
+          <input type="text" class="form-control" id="departurelocation" placeholder="Departure Location" ng-model="departurelocation">
         </div>
-    </div>
+        <div class="col-sm-6">
+          <label for="Departure">Departure Time</label>
+          <input type="datetime-local" class="form-control" id="Departure" placeholder="Departure Time" ng-model="departuretime">
+        </div>
+        </div>
+        <div class="form-group row fontweight text-dark">
+            <div class="col-sm-6">
+              <label for="arrivallocation">Arriving At</label>
+              <input type="text" class="form-control" id="arrivallocation" placeholder="Arrival Location" ng-model="arrivallocation">
+            </div>
+            <div class="col-sm-6">
+              <label for="arrival">Arrival Time</label>
+              <input type="datetime-local" class="form-control" id="Arrival" placeholder="Arrival Time" ng-model="arrivaltime">
+            </div>
+            </div>
+
+      <button type="submit" class="btn btn-secondary editbutton" ng-click="createTransport(user[0].user_name,type,departurelocation,departuretime,arrivallocation,arrivaltime)">
+      >Submit</button>
+    </form>
+  </div>
+</div>
 </div>
