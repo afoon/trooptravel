@@ -1,1 +1,1 @@
-select * from activities where tripid=$1;
+select * from activity where tripid=$1;

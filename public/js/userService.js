@@ -61,6 +61,7 @@ angular.module("troopApp").service("userService", function($http) {
   };
 
   this.getActivities = function(tripid) {
+    console.log(tripid)
     return $http.get(`/api/activities/${tripid}`).then(function(response) {
       return response;
     });
@@ -75,6 +76,12 @@ angular.module("troopApp").service("userService", function($http) {
 
   this.getTransitRiders = function(tripid) {
   return $http.get(`/api/utransport/${tripid}`).then(function(response) {
+    return response;
+  });
+};
+
+  this.getActivityUser = function(tripid) {
+  return $http.get(`/api/uactivities/${tripid}`).then(function(response) {
     return response;
   });
 };

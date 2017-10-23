@@ -43,9 +43,11 @@ const getTransportation = (req, res, next) => {
 const getActivities = (req, res, next) => {
   const db = req.app.get("db");
   if (req.user) {
+    console.log(req.params.tripid)
     db
       .getActivities([req.params.tripid])
       .then(response => {
+        console.log('went to database')
         res.status(200).json(response);
       })
       .catch(err => {
@@ -112,6 +114,19 @@ const getTransitRiders = (req, res, next) => {
   const db = req.app.get("db");
   db
     .getTransitRiders([req.params.tripid])
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(err => {
+      res.status(500);
+    });
+};
+
+
+const getActivityUser = (req, res, next) => {
+  const db = req.app.get("db");
+  db
+    .getActivityUser([req.params.tripid])
     .then(response => {
       res.status(200).json(response);
     })
@@ -190,14 +205,15 @@ const createActivity = (req, res, next) => {
   const { authid,tripid,
     name,location,price,link,description,time
   } = req.body;
-  var photo = '../img/activities.png'
-  console.log('dataCtrl',req.body);
+  var photo = '../img/activities.png';
+  console.log('dataCtrl',req.body,photo);
   db
     .createActivity(
       [ authid,tripid,
         name,location,price,link,description,time,
     photo]
     ).then(response => {
+      console.log('response',response)
       db.addActivityGuest(response[0].creatinguser, response[0].tripid,response[0].id);
     })
     .then(response => res.json(response))
@@ -331,6 +347,7 @@ const downvote = (req, res, next) => {
 module.exports = {
   getAll,
   getActivities,
+  getActivityUser,
   getCurrUser,
   getUserTrips,
   getCurrTrip,

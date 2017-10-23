@@ -30,6 +30,12 @@ angular
         $scope.currtrip = response.data;
       });
     }
+    function getActivityUser(tripid) {
+      userService.getActivityUser($stateParams.id).then(function(response) {
+        $scope.activityguest= response.data;
+        console.log($scope.activityguest);
+      });
+    }
     function getRules(tripid) {
         userService.getRules($stateParams.id).then(function(response) {
           $scope.rules = response.data;
@@ -57,8 +63,10 @@ angular
         });
       }
     function getActivities(tripid) {
+      console.log($stateParams.id)
         userService.getActivities($stateParams.id).then(function(response) {
           $scope.activities = response.data;
+          console.log('activity',$scope.activities)
         });
       }
 
@@ -197,5 +205,6 @@ angular
     getTransitRiders();
     getRules();
     getActivities();
+    getActivityUser();
     // $scope.addTripGuest();
   });

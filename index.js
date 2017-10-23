@@ -141,7 +141,8 @@ app.get('/api/tripguest/:tripid', ctrl.getTripGuest);
 app.get('/api/transport/:tripid', ctrl.getTransportation);
 app.get('/api/utransport/:tripid', ctrl.getTransitRiders);
 app.get('/api/rules/:tripid', ctrl.getRules);
-app.get('/api/activities/:tripid', ctrl.getRules);
+app.get('/api/activities/:tripid', ctrl.getActivities);
+app.get('/api/uactivities/:tripid', ctrl.getActivityUser);
 
 app.post('/api/users',ctrl.createUser);
 app.post('/api/trips',ctrl.createTrip);
