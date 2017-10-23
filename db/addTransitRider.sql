@@ -1,0 +1,1 @@
+INSERT INTO users_transport (authid,tripid,transportid) VALUES ($1,$2,$3);

@@ -1,0 +1,1 @@
+SELECT * FROM user_transit WHERE authid=$1 AND tripid=$2 AND transportid=$3

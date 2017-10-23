@@ -1,0 +1,20 @@
+<!--New Trip Modal   -->
+<button class="bg-faded btn btn-secondary" id="btn" data-toggle="modal" data-target=".rulesmodal"><img src="../img/add button.png" style="height:75px;"> Add Rule</button>
+
+<div class="modal fade rulesmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="center">
+       <p class="welcome text-dark">Create a New Rule</p>
+       <small class="form-text text-muted">Add guidelines or rules that guest should be aware of during this trip </small>
+     <form>
+         <div class="form-group mx-auto">
+           <textarea type="textarea" class="form-control form-control-lg" id="rule" placeholder="Enter new Rule Here" ng-model="rule"></textarea>
+         </div>
+         <button type="submit" class="btn editbutton" ng-click="createRule(user[0].authid,currtrip[0].tripid,rule)" data-dismiss="modal">Submit</button>
+
+       </form>
+    </div>
+  </div>
+</div>
+</div>
+</div> 

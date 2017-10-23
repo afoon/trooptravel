@@ -10,6 +10,12 @@
                 <div class="makeRow">
                         <img src="../img/tripRules.png" style="height:100px;">
                         <p class="welcome">Trip Guidelines</p>
+                        <add-rule></add-rule>
+                    </div>
+                    <div>
+                        <ul ng-repeat="rule in rules">
+                          <li class="text-dark list">{{rule.rule}}</li>
+                        </ul>
                     </div>
     </div>
 </div>

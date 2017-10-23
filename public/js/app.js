@@ -6,6 +6,11 @@ angular.module('troopApp',['ui.router']).config(function ($stateProvider, $urlRo
                 templateUrl: '/views/landing.html',
                 
             })
+            .state('about', {
+                url: '/about',
+                templateUrl: '/views/about.html',
+                
+            })
             .state('main', {
                 url: '/main',
                 templateUrl: 'views/main.html',

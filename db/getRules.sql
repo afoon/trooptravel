@@ -1,0 +1,1 @@
+select * from tripguidelines where tripid=$1;

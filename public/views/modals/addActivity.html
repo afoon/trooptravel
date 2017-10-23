@@ -1,0 +1,51 @@
+                <!-- begin add activity modal -->
+                <button class="btn btn-primary" id="btn" data-toggle="modal" data-target=".activitymodal">
+                        <img src="../img/add button.png" style="height:75px;"> Add activity</button>
+                    <div class="modal fade activitymodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content" id="center">
+                                    <span>
+                                            <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </span>
+                                <p class="welcome text-dark"> Add an Activity for {{currtrip[0].location}}</p>
+                                <form>
+    
+                                    <div class="form-group text-dark">
+                                        <label for="name">Enter Name of the Activity</label>
+                                        <input type="text" class="form-control" id="name" placeholder="NAME" ng-model="name">
+                                    </div>
+                                    <div class="form-group text-dark">
+                                            <label for="location">Location of Activity</label>
+                                            <input type="text" class="form-control" id="location" placeholder="LOCATION" ng-model="location">
+                                        </div>
+                                        <div class="form-group text-dark">
+                                                <label for="time">Date and Time of Activity</label>
+                                                <input type="datetime-local" class="form-control" id="time" placeholder="time" ng-model="time">
+                                            </div>
+                                    <div class="form-group text-dark">
+                                        <label for="price">Price</label>
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon">$</div>
+                                            <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="PRICE" ng-model=price>
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group text-dark">
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" id="link" placeholder="LINK TO ACTVITY (optional)" ng-model="link">
+                                    </div>
+    
+                                    <div class="form-group text-dark mx-auto">
+                                            <label for="link">Activity Description</label>
+                                            <input type="textarea" class="form-control form-control-lg" id="description" placeholder="Add a Description" ng-model="description">
+                                          </div>
+    
+                                    <button type="submit" class="btn editbutton" ng-click="createActivity(user[0].authid,currtrip[0].tripid,name,location,price,link,description,time)" data-dismiss="modal">Submit</button>
+    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end add activity modal -->

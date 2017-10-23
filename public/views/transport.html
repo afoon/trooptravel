@@ -8,24 +8,30 @@
             <button type="button" class="close" aria-label="Close" ui-sref="trip({id:currtrip[0].tripid})">
                 <span aria-hidden="true">&times;</span></button>
                 <div class="makeRow">
+                    <div class=makeRow>
                         <img src="../img/transportation.png" style="height:100px;">
                         <p class="welcome">Transportation</p>
                     </div>
-                    <transport-modal></transport-modal>
+                        <transport-modal></transport-modal>
+                    </div>
+                    
                     <div class="makehousing">
-                            <div class="housingBox">
-                                <div class="makeColumn">
+                            <div class="housingBox" ng-repeat="transport in transportation">
+                                <div class="makeColumn center">
                                     <div class="">
-                                        <img class="houseImg" src="../img/transportation.png">
+                                        <img class="transportImg" src="{{transport.photo}}">
                                     </div>
-                                    <div class="houseTitle">
-                                        <p>Atlanta to Detroit</p>
-                                        <p>Depart 3:00pm - Arrive 5:00pm </p>
+                                    <div class="transportTitle">
+                                        <p>{{transport.departure}} <i class="material-icons">arrow_forward</i> {{transport.arrival}}</p>
+                                        <p><b>Depart</b>
+                                     {{transport.departuretime | date:  'MMM d h:mm a' }} <br>
+                                     <b>Arrive</b> {{transport.arrivaltime | date: 'MMM d h:mm a' }}</p>
                                     </div>
                                     <div class="makeGuestRow">
-                                            <div ng-repeat="guest in tripguest | limitTo: 5" class="makeColumn">
-                                                <img class="usercircle" ng-src="{{guest.photourl}}" data-toggle="popover" data-content="{{guest.user_name}}">
+                                            <div ng-repeat="rider in riders" ng-if="rider.transportid == transport.id" class="makeColumn">
+                                                <img class="usercircle" ng-src="{{rider.photourl}}" data-toggle="popover" data-content="{{guest.user_name}}">
                                             </div>
+                                            <add-rider></add-rider>
                                     </div>
                                 </div>
                             </div>

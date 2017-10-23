@@ -1,5 +1,5 @@
-<button class="btn editbutton"  data-toggle="modal"
-data-target=".addTransit">Edit</button>
+<button class="btn btn-secondary" id="btn" data-toggle="modal"
+data-target=".addTransit"> <img src="../img/add button.png" style="height:75px;">Add Transportation</button>
 <div class="modal fade addTransit" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content" id="center">
@@ -38,8 +38,8 @@ data-target=".addTransit">Edit</button>
             </div>
             </div>
 
-      <button type="submit" class="btn btn-secondary editbutton" ng-click="createTransport(user[0].user_name,type,departurelocation,departuretime,arrivallocation,arrivaltime)">
-      >Submit</button>
+      <button type="submit" class="btn btn-secondary editbutton" ng-click="createTransportation(currtrip[0].tripid,type,departurelocation,departuretime,arrivallocation,arrivaltime)" data-dismiss="modal">
+      Submit</button>
     </form>
   </div>
 </div>

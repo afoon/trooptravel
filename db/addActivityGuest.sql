@@ -1,0 +1,1 @@
+INSERT INTO users_activities (authid,tripid,activityid) VALUES ($1,$2,$3);

@@ -138,11 +138,18 @@ app.get('/api/utrips', ctrl.getUserTrips);
 app.get('/api/currtrip/:tripid', ctrl.getCurrTrip);
 app.get('/api/housing/:tripid', ctrl.getHousing);
 app.get('/api/tripguest/:tripid', ctrl.getTripGuest);
+app.get('/api/transport/:tripid', ctrl.getTransportation);
+app.get('/api/utransport/:tripid', ctrl.getTransitRiders);
+app.get('/api/rules/:tripid', ctrl.getRules);
+app.get('/api/activities/:tripid', ctrl.getRules);
 
 app.post('/api/users',ctrl.createUser);
 app.post('/api/trips',ctrl.createTrip);
 app.post('/api/housing',ctrl.createHousing);
 app.post('/api/trips/:tripid',ctrl.addTripGuest);
+app.post('/api/transport/',ctrl.createTransportation);
+app.post('/api/activity/',ctrl.createActivity);
+app.post('/api/rules/',ctrl.createRule);
 
 app.put('/api/housing/:id', ctrl.updateHousing);
 app.put('/api/trips/:id', ctrl.updateTrip);

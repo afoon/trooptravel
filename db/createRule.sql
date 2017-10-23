@@ -1,0 +1,1 @@
+INSERT INTO tripguidelines (creatinguser,tripid,rule) VALUES ($1,$2,$3);

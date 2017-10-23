@@ -10,6 +10,27 @@
                 <div class="makeRow">
                         <img src="../img/activities.png" style="height:100px;">
                         <p class="welcome">Activities</p>
+                        <add-activity></add-activity>
                     </div>
+                    <div class="makehousing">
+                            <div class="housingBox" ng-repeat="activity in activities">
+                                <div class="makeColumn center">
+                                    <div class="">
+                                        <img class="transportImg" src="{{activity.photo}}">
+                                    </div>
+                                    <div class="transportTitle">
+                                       {{activity.name}}
+                                     {{activity.location}}<br>
+                                    {{activity/time}}</p>
+                                    </div>
+                                    <div class="makeGuestRow hideme">
+                                            <div ng-repeat="people in actvityguest" ng-if="people.activityid == activity.id" class="makeColumn">
+                                                <img class="usercircle" ng-src="{{people.photourl}}" data-toggle="popover" data-content="{{people.user_name}}">
+                                            </div>
+                                            <activity-friend></activity-friend>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
     </div>
 </div>
