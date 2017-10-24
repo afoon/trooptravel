@@ -19,15 +19,18 @@
                                         <img class="transportImg" src="{{activity.photourl}}">
                                     </div>
                                     <div class="transportTitle">
-                                       {{activity.name}}
-                                     {{activity.location}}<br>
-                                    {{activity.time}}</p>
+                                       <b>{{activity.name}}</b><br>
+                                     <b>Location:</b> {{activity.location}}<br>
+                                    {{activity.time | date: 'short'}}</p>
+                                    <activity-modal></activity-modal>
                                     </div>
                                     <div class="makeGuestRow">
                                             <div ng-repeat="people in activityguest" ng-if="people.activityid == activity.id" class="makeColumn">
                                                 <img class="usercircle" ng-src="{{people.photourl}}" data-toggle="popover" data-content="{{people.user_name}}">
                                             </div>
-                                            <activity-friend></activity-friend>
+                                            <button class="btn btn-seconday" id="noMargin" ng-click="addActivityGuest(currtrip[0].tripid,user[0].authid,activity.id)">
+                                                <img src="../img/friend.png" style="height: 60px; padding:0px; margin:0px">
+                                            </button >
                                     </div>
                                 </div>
                             </div>

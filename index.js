@@ -151,6 +151,8 @@ app.post('/api/trips/:tripid',ctrl.addTripGuest);
 app.post('/api/transport/',ctrl.createTransportation);
 app.post('/api/activity/',ctrl.createActivity);
 app.post('/api/rules/',ctrl.createRule);
+app.post('/api/activity/:tripid',ctrl.addActivityGuest);
+app.post('/api/transport/:tripid',ctrl.addTransitRider);
 
 app.put('/api/housing/:id', ctrl.updateHousing);
 app.put('/api/trips/:id', ctrl.updateTrip);
@@ -160,6 +162,7 @@ app.put('/api/downvote/:id',ctrl.downvote);
 app.delete('/api/trips/:id', ctrl.deleteTrip);
 app.delete('/api/housing/:id', ctrl.deleteHousing);
 app.delete('/api/guest/:id', ctrl.removeTripUser);
+app.delete('/api/rule/:id', ctrl.removeRule);
 
 
 app.listen( port, () => { console.log(`Andre ${port}`); } );

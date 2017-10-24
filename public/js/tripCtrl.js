@@ -33,13 +33,11 @@ angular
     function getActivityUser(tripid) {
       userService.getActivityUser($stateParams.id).then(function(response) {
         $scope.activityguest= response.data;
-        console.log($scope.activityguest);
       });
     }
     function getRules(tripid) {
         userService.getRules($stateParams.id).then(function(response) {
           $scope.rules = response.data;
-          console.log('rules',$scope.rules);
         });
       }
     function getTripGuest(tripid) {
@@ -63,10 +61,8 @@ angular
         });
       }
     function getActivities(tripid) {
-      console.log($stateParams.id)
         userService.getActivities($stateParams.id).then(function(response) {
           $scope.activities = response.data;
-          console.log('activity',$scope.activities)
         });
       }
 
@@ -94,7 +90,6 @@ angular
       arrivallocation,
       arrivaltime
     ) {
-        console.log('trip Ctrl')
       userService
         .createTransportation(
           tripid,
@@ -106,6 +101,7 @@ angular
         )
         .then(function(response) {
           getTransportation();
+          getTransitRiders();
         });
     };
 
@@ -114,21 +110,19 @@ angular
         authid,tripid,
         name,location,price,link,description,time
     ) {
-        console.log('trip Ctrl activity')
       userService
         .createActivity(
             authid,tripid,
             name,location,price,link,description,time
         )
         .then(function(response) {
-          getActivity();
+          getActivities();
         });
     };
 
     $scope.createRule = function(
         authid,tripid,rule
     ) {
-        console.log('trip Ctrl rule')
       userService
         .createRule(
             authid,tripid,rule
@@ -140,9 +134,22 @@ angular
 
 
     $scope.addTripGuest = function(tripid, authid) {
-      console.log("Trip Ctrl", tripid, authid);
       userService.addTripGuest(tripid, authid).then(function(response) {
         getTripGuest();
+      });
+    };
+
+    $scope.addTransitRider = function(tripid, authid, transportid) {
+      console.log("Trip Ctrl transit", tripid, authid, transportid);
+      userService.addTransitRider(tripid, authid, transportid).then(function(response) {
+        getTransitRiders();
+      });
+    };
+
+    $scope.addActivityGuest = function(tripid, authid, activityid) {
+      console.log("Trip Ctrl activity", tripid, authid, activityid);
+      userService.addActivityGuest(tripid, authid, activityid).then(function(response) {
+        getActivityUser();
       });
     };
 
@@ -168,7 +175,6 @@ angular
     };
 
     $scope.updateHousing = function(id, location, price, link, photourl) {
-      console.log("update:", id, location, price, link, photourl);
       userService
         .updateHousing(id, location, price, link, photourl)
         .then(function(response) {
@@ -184,11 +190,17 @@ angular
       $(".editTripModal").modal("hide");
     };
     $scope.removeTripUser = function(id) {
-      console.log("TripCtrl", id);
       userService.removeTripUser(id).then(function(response) {
         return response;
       });
       getTripGuest();
+    };
+    $scope.removeRule = function(id) {
+      console.log("TripCtrl rule", id);
+      userService.removeRule(id).then(function(response) {
+        return response;
+      });
+      getRules();
     };
 
     // $scope.addTripGuest = function($stateParams.id,friend){

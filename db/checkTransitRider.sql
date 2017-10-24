@@ -1,1 +1,1 @@
-SELECT * FROM user_transit WHERE authid=$1 AND tripid=$2 AND transportid=$3
+SELECT * FROM users_transport WHERE authid=$1 AND tripid=$2 AND transportid=$3

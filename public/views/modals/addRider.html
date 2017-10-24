@@ -1,14 +1,14 @@
-<button class="btn btn-seconday" id="noMargin" data-toggle="modal" data-target=".ridersmodal">
+<button class="btn btn-seconday" id="noMargin" data-toggle="modal" data-target=".{{transport.id}}modal">
         <img src="../img/friend.png" style="height: 60px; padding:0px; margin:0px">
     </button>
-    <div class="modal ridersmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+    <div class="modal {{transport.id}}modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="center">
                 <p class="welcome text-dark">Add Friend to Transportation</p>
                 <form>
                     <div class="form-check" ng-repeat="guest in tripguest" >
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" ng-click="addTransitRider(friend.authid,currtrip[0].tripid,transport.id)" >
+                            <input type="checkbox" class="form-check-input" ng-click="addTransitRider(currtrip[0].tripid,guest.authid,transport.id)" >
                             <span class="text-muted">
                                 <img class="usericon" ng-src="{{guest.photourl}}">{{guest.user_name}}</span>
                         </label>

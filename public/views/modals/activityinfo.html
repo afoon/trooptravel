@@ -1,0 +1,19 @@
+<button class="btn btn-secondary" data-toggle="modal" data-target=".activity{{activity.id}}"> More Info</button>
+<div class="modal fade activity{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content scroll" id="center">
+            <span>
+                <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+            <div class="makeColumn">
+                <b>{{activity.name}}</b><br>
+                <span><b>Price: </b>${{activity.price}}<br></span>
+                <a ng-href="{{activity.link}}" target="_blank">Link</a>
+                <b>Description</b>
+                {{activity.description}}
+</div>
+        </div>
+    </div>
+</div>

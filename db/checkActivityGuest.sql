@@ -1,0 +1,1 @@
+SELECT * FROM users_activities WHERE authid=$1 AND tripid=$2 AND activityid=$3

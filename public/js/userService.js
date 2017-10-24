@@ -38,6 +38,22 @@ angular.module("troopApp").service("userService", function($http) {
         return response;
       });
   };
+  this.addTransitRider = function(tripid, authid, transportid) {
+    return $http
+      .post(`/api/transport/${tripid}`, { authid, transportid })
+      .then(function(response) {
+        return response;
+      });
+  };
+
+  this.addActivityGuest = function(tripid, authid, activityid) {
+    console.log('went to control')
+    return $http
+      .post(`/api/activity/${tripid}`, { authid, activityid })
+      .then(function(response) {
+        return response;
+      });
+  };
 
   this.createRule = function(tripid, authid,rule) {
     console.log("Service", tripid, authid, rule);
@@ -61,14 +77,12 @@ angular.module("troopApp").service("userService", function($http) {
   };
 
   this.getActivities = function(tripid) {
-    console.log(tripid)
     return $http.get(`/api/activities/${tripid}`).then(function(response) {
       return response;
     });
   };
 
   this.getRules = function(tripid) {
-      console.log('getting rules in service');
     return $http.get(`/api/rules/${tripid}`).then(function(response) {
       return response;
     });
@@ -131,7 +145,6 @@ angular.module("troopApp").service("userService", function($http) {
     arrivallocation,
     arrivaltime
   ) {
-      console.log('create Service')
     return $http
       .post("/api/transport/", {
         tripid,
@@ -174,6 +187,12 @@ angular.module("troopApp").service("userService", function($http) {
   this.removeTripUser = function(id) {
     console.log("Srv", id);
     return $http.delete(`/api/guest/${id}`).then(function(response) {
+      return response;
+    });
+  };
+  this.removeRule = function(id) {
+    console.log("Srv rule", id);
+    return $http.delete(`/api/rule/${id}`).then(function(response) {
       return response;
     });
   };

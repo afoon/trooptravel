@@ -1,1 +1,2 @@
-select * from tripguidelines where tripid=$1;
+select * from tripguidelines
+join users on users.authid=tripguidelines.creatinguser where tripid=$1;

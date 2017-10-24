@@ -43,11 +43,9 @@ const getTransportation = (req, res, next) => {
 const getActivities = (req, res, next) => {
   const db = req.app.get("db");
   if (req.user) {
-    console.log(req.params.tripid)
     db
       .getActivities([req.params.tripid])
       .then(response => {
-        console.log('went to database')
         res.status(200).json(response);
       })
       .catch(err => {
@@ -179,7 +177,6 @@ const createTransportation = (req, res, next) => {
   if(type == 'Car'){
     var photo = '../img/car.png'
   }
-  console.log('dataCtrl',req.body);
   db
     .createTransportation(
       [tripid,
@@ -206,14 +203,12 @@ const createActivity = (req, res, next) => {
     name,location,price,link,description,time
   } = req.body;
   var photo = '../img/activities.png';
-  console.log('dataCtrl',req.body,photo);
   db
     .createActivity(
       [ authid,tripid,
         name,location,price,link,description,time,
     photo]
     ).then(response => {
-      console.log('response',response)
       db.addActivityGuest(response[0].creatinguser, response[0].tripid,response[0].id);
     })
     .then(response => res.json(response))
@@ -241,9 +236,39 @@ const addTripGuest = (req, res, next) => {
   });
 };
 
+const addActivityGuest = (req, res, next) => {
+  const db = req.app.get("db");
+  db.checkActivityGuest([req.body.authid, req.params.tripid,req.body.activityid]).then(response => {
+    if (response.length === 0) {
+      db
+        .addActivityGuest([req.body.authid, req.params.tripid,req.body.activityid])
+        .then(response => {
+          res.status(200).json(response);
+        })
+        .catch(err => {
+          res.status(500);
+        });
+    }
+  });
+};
+const addTransitRider = (req, res, next) => {
+  const db = req.app.get("db");
+  db.checkTransitRider([req.body.authid, req.params.tripid,req.body.transportid]).then(response => {
+    if (response.length === 0) {
+      db
+        .addTransitRider([req.body.authid, req.params.tripid,req.body.transportid])
+        .then(response => {
+          res.status(200).json(response);
+        })
+        .catch(err => {
+          res.status(500);
+        });
+    }
+  });
+}
+
 const createRule = (req, res, next) => {
   const db = req.app.get("db");
-  console.log(req.body)
   db.createRule([req.body.tripid, req.body.authid, req.body.rule]).then(response => {
     res.status(200).json(response);
   });
@@ -329,6 +354,16 @@ const removeTripUser = (req, res, next) => {
     .catch(err => res.status(500));
 };
 
+
+const removeRule = (req, res, next) => {
+  const db = req.app.get("db");
+  console.log('deleting rule:',req.params.id);
+  db
+    .removeRule([req.params.id])
+    .then(response => res.status(200).json(response))
+    .catch(err => res.status(500));
+};
+
 const upvote = (req, res, next) => {
   const db = req.app.get("db");
   db
@@ -367,7 +402,10 @@ module.exports = {
   updateHousing,
   updateTrip,
   removeTripUser,
+  removeRule,
   addTripGuest,
+  addActivityGuest,
+  addTransitRider,
   upvote,
   downvote
 };

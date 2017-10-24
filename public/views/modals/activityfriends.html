@@ -1,0 +1,24 @@
+<button class="btn btn-seconday default-text" id="btn" data-toggle="modal" data-target=".activityfriendmodal">
+    +{{activityguest.length-5}}
+</button>
+<div class="modal fade activityfriendmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content" id="center">
+            <span>
+                    <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </span>
+        <p class="welcome text-dark">Add to {{currtrip[0].location}}</p>
+            <div ng-repeat="guest in tripguest"class="housing-text text-dark" >
+                       <span><img class="usericon" ng-src="{{guest.photourl}}">{{guest.user_name}}&nbsp</span>
+                       <button class="btn btn-danger" id="mobile-remove"  ng-click="removeTripUser(guest.id)" ng-if="user[0].authid==guest.authid && user[0].authid != currtrip[0].admin">Leave this Trip</button>
+                       <button class="btn btn-danger" id="mobile-remove"  ng-click="removeTripUser(guest.id)" ng-if="user[0].authid == currtrip[0].admin && guest.authid != currtrip[0].admin">Remove Guest</button>
+                       <button class="btn btn-danger"  id="desktop-remove" ng-click="removeTripUser(guest.id)" ng-if="user[0].authid==guest.authid && user[0].authid != currtrip[0].admin">X</button>
+                       <button class="btn btn-danger" id="desktop-remove" ng-click="removeTripUser(guest.id)" ng-if="user[0].authid == currtrip[0].admin && guest.authid != currtrip[0].admin">X</button>
+            </div>
+            <button class="btn editbutton" data-dismiss="modal">Done</button>
+
+    </div>
+</div>
+</div>

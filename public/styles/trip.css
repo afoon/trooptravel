@@ -64,7 +64,9 @@
     flex-wrap: wrap;    
   }
   
-
+.tripIcon{
+    width: 175px;
+}
 .tripboxoverlay{
     position: absolute;
     top:0;

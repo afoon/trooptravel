@@ -12,10 +12,17 @@
                         <p class="welcome">Trip Guidelines</p>
                         <add-rule></add-rule>
                     </div>
-                    <div>
-                        <ul ng-repeat="rule in rules">
-                          <li class="text-dark list">{{rule.rule}}</li>
-                        </ul>
+                    <div class="makeRow ruleBox" ng-repeat="rule in rules">
+                    <div class="makeColumn">
+                        <p class="text-dark noMargin">{{rule.rule}}</p>
+                        <small class="ruleSubmit">submitted by: {{rule.user_name}}</small>
+                    </div>
+                    <div class="makeRow">
+                            <button class="btn btn-secondary center" id="mobile-remove"  ng-click="removeRule(rule.id)" ng-if="user[0].authid == currtrip[0].admin && user[0].authid == currtrip[0].admin">Delete</button>
+                            <button class="btn btn-secondary center"  id="desktop-remove" ng-click="removeRule(rule.id)" ng-if="user[0].authid==rule.creatinguser && user[0].authid != currtrip[0].admin">X</button>
+                            <button class="btn btn-secondary" id="mobile-remove"  ng-click="removeRule(rule.id)" ng-if="user[0].authid==rule.creatinguser && user[0].authid != currtrip[0].admin">Delete</button>
+                            <button class="btn btn-secondary" id="desktop-remove"  ng-click="removeRule(rule.id)" ng-if="user[0].authid==rule.creatinguser && user[0].authid == currtrip[0].admin">X</button>
+                    </div>
                     </div>
     </div>
 </div>
